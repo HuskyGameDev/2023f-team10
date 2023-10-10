@@ -10,7 +10,6 @@ public class Teleporter : MonoBehaviour
     //using trigger so if we wish to do collisions this won't affect anything
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("stuff");
         collision.gameObject.transform.position = toHere.transform.position;
     }
 }
