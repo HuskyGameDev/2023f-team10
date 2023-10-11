@@ -51,13 +51,16 @@ public class Shooter : MonoBehaviour
             {
                 Vector2 pos = FindBulletSpawnPos(currentAngle);
 
-                GameObject newBullet = Instantiate(bulletPrefab, pos, Quaternion.identity);
-                newBullet.transform.up = newBullet.transform.position - transform.position;
+                GameObject newBullet = Instantiate(bulletPrefab, pos, transform.rotation);
+                // newBullet.transform.up = newBullet.transform.position - transform.position
+                newBullet.transform.Rotate(new Vector3(0, 0, 1), currentAngle + 90);
 
                 currentAngle += angleStep;
             }
 
             currentAngle = startAngle + (rotationPerBurst * (i + 1));
+
+            // TODO: play the sound attached to the bullet here
 
             yield return new WaitForSeconds(burstInterval);
         }
