@@ -924,7 +924,6 @@ GameObject:
   - component: {fileID: 1824701458}
   - component: {fileID: 1824701459}
   - component: {fileID: 1824701460}
-  - component: {fileID: 1824701461}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Untagged
@@ -1078,29 +1077,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824701454}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cace0a9318be1864fa1207721454aef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveType: 2
+  moveType: 5
   speed: 5
   angle: 45
---- !u!114 &1824701461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824701454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128f72fb41b44104dbb3de3fe93f7267, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  moveChangeTimer: 5
   targetOrigin: {fileID: 565795584}
-  targetingRadius: 10
-  speed: 20
+  targetingRadius: 3
+  target: {x: 0, y: 1, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -11,17 +11,30 @@ using UnityEngine;
 */
 public class StraightLine : MonoBehaviour
 {
-    enum MoveOptions{VERTICAL, HORIZONTAL, DIAGONAL, ZIGZAG};
+    //randomhold is to have the enemy find a random position onscreen and hold position once it gets there
+    enum MoveOptions{VERTICAL, HORIZONTAL, DIAGONAL, ZIGZAG, RANDOMHOLD, RANDOM};
 
-    //tweak these values in the editor
+    //general variables
     [SerializeField] MoveOptions moveType;
     [SerializeField] float speed = 0;
+
+    //for diagonal and zig zag movement
     [SerializeField] float angle = 0;
 
-    //zig zag will change direction every amount of seconds specified here
-    [SerializeField] float zigZagChangeTime = 0;
+    //zig zag will change direction every amount of seconds specified
+    [SerializeField] float moveChangeTimer = 0;
 
+    //for random hold movement
+    [SerializeField] GameObject targetOrigin = null;
+    [SerializeField] float targetingRadius = 0;
+
+    //used to keep track of what the current countdown until an event is (being used for zig zag only  as of writing this)
     private float secondTimer = 0;
+
+    //used to control randomHold
+    private bool foundSpot = false;
+    private Vector3 direction = Vector3.up;
+    public Vector3 target = Vector3.up;
 
     private void Awake()
     {
@@ -43,6 +56,10 @@ public class StraightLine : MonoBehaviour
 
         else if (moveType == MoveOptions.ZIGZAG)
             zigZagMove();
+
+        //handles random hold and ranom move
+        else if (moveType == MoveOptions.RANDOMHOLD || moveType == MoveOptions.RANDOM)
+            randomMovement();
 
         //count the timer down every second
         secondTimer -= Time.fixedDeltaTime;
@@ -85,11 +102,36 @@ public class StraightLine : MonoBehaviour
         //change the objects diagnoal direction or move it
         if (secondTimer <= 0)
         {
-            secondTimer = zigZagChangeTime;
+            secondTimer = moveChangeTimer;
             speed = -speed;
             angle = -angle;
         }
       
         diagonalMove(angle);
+    }
+
+    //has the object choose a random position within a given radius and then go there and remain until something else changes its position
+    private void randomMovement()
+    {
+        if (!foundSpot)
+        {
+            //pick a location within the given radius around the given target objects position
+            Vector2 originPos = new Vector2(targetOrigin.transform.position.x, targetOrigin.transform.position.y);
+            target = originPos + (UnityEngine.Random.insideUnitCircle * targetingRadius);
+
+            //calculate the normalized vector distance between target and this object
+            direction = (target - transform.position).normalized;
+
+            foundSpot = true;
+        }
+
+        //go towards the target position until the object gets there
+        if (foundSpot && (target - transform.position).magnitude > .5)
+        {
+            transform.position += direction * speed * Time.fixedDeltaTime;
+        }
+        //if the target should find a new position to go to after getting where it's going
+        else if (moveType == MoveOptions.RANDOM)
+            foundSpot = false;
     }
 }
