@@ -13,9 +13,8 @@ public class StraightLine : MonoBehaviour
 {
     enum MoveOptions{VERTICAL, HORIZONTAL, DIAGONAL};
 
-    //tweak this value in the editor
+    //tweak these values in the editor
     [SerializeField] MoveOptions moveType;
-
     [SerializeField] float speed = 0;
     [SerializeField] float angle = 0;
 
