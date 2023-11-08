@@ -9,10 +9,10 @@ using UnityEngine;
  *Horizontal:moves the enemy left or right at the specified speed
  *Diagonal: moves the enemy diagonally at the angle and speed specified
 */
-public class StraightLine : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     //randomhold is to have the enemy find a random position onscreen and hold position once it gets there
-    enum MoveOptions{VERTICAL, HORIZONTAL, DIAGONAL, ZIGZAG, RANDOMHOLD, RANDOM};
+    private enum MoveOptions{VERTICAL, HORIZONTAL, DIAGONAL, ZIGZAG, RANDOMHOLD, RANDOM};
 
     //general variables
     [SerializeField] MoveOptions moveType;
@@ -35,11 +35,6 @@ public class StraightLine : MonoBehaviour
     private bool foundSpot = false;
     private Vector3 direction = Vector3.up;
     public Vector3 target = Vector3.up;
-
-    private void Awake()
-    {
-        //InvokeRepeating("countDown", 0, checkTime);
-    }
 
     //updating on fixed update for consistent behavior
     private void FixedUpdate()
@@ -76,7 +71,7 @@ public class StraightLine : MonoBehaviour
     //the angle to get the horzontal/verticle distance at a right angle to eachother and input that in a similar way to the vertical/horizontal movement methods above
     //see this for more https://www.geeksforgeeks.org/how-to-find-an-angle-in-a-right-angled-triangle/
     //the math might be a bit off but it gives a close enough for what's needed
-    private void diagonalMove(float diagAngle)
+    public void diagonalMove(float diagAngle)
     {
         //convert from degrees into radians
         double b = diagAngle * Math.PI / 180;
@@ -97,7 +92,7 @@ public class StraightLine : MonoBehaviour
     }
 
     //moves the object in a left to right diagonal and then switches going right to left at a given angle 
-    private void zigZagMove()
+    public void zigZagMove()
     {
         //change the objects diagnoal direction or move it
         if (secondTimer <= 0)
@@ -111,7 +106,7 @@ public class StraightLine : MonoBehaviour
     }
 
     //has the object choose a random position within a given radius and then go there and remain until something else changes its position
-    private void randomMovement()
+    public void randomMovement()
     {
         if (!foundSpot)
         {

@@ -924,6 +924,8 @@ GameObject:
   - component: {fileID: 1824701458}
   - component: {fileID: 1824701459}
   - component: {fileID: 1824701460}
+  - component: {fileID: 1824701461}
+  - component: {fileID: 1824701462}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Untagged
@@ -1089,6 +1091,44 @@ MonoBehaviour:
   targetOrigin: {fileID: 565795584}
   targetingRadius: 3
   target: {x: 0, y: 1, z: 0}
+--- !u!114 &1824701461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824701454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1ba097405caf549ba7f380693c6d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAttackPattern: 0
+  attackSpeed: 5
+--- !u!114 &1824701462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824701454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4949598f2b4fec4c8cfe8e79b9063b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instatiateAsChild: 0
+  bulletPrefab: {fileID: 0}
+  burstCount: 0
+  bulletsPerBurst: 0
+  angleSpread: 0
+  startingDistance: 0.1
+  startingDirection: {x: 0, y: -1}
+  shotWidth: 0
+  burstInterval: 0
+  restTime: 0
+  rotate: 0
+  rotationPerBurst: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
