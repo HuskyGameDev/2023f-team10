@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Sprite dashingSprite;
     private CapsuleCollider2D hurtbox;
     private Rigidbody2D rb;
+    [SerializeField] private GameObject goBasicShooter;
+    [SerializeField] private GameObject goLaserShooter;
+    private Shooter basicShooter;
+    private Shooter laserShooter;
     
     [SerializeField] private float maxSpeed;
     public float MaxSpeed { 
@@ -63,6 +67,10 @@ public class PlayerMovement : MonoBehaviour
         defaultSprite = sr.sprite;
         rb = GetComponent<Rigidbody2D>();
         hurtbox = GetComponent<CapsuleCollider2D>();
+        basicShooter = goBasicShooter.GetComponent<Shooter>();
+        laserShooter = goLaserShooter.GetComponent<Shooter>();
+
+        ShootBasic();
     }
 
     public void MoveDirection(Vector2 direction)
@@ -138,6 +146,24 @@ public class PlayerMovement : MonoBehaviour
             hurtbox.enabled = false;
             StartCoroutine(DashRoutine());
         }
+    }
+
+    /// <summary>
+    /// Starts charging the player's laser attack.
+    /// </summary>
+    public void ChargeLaser()
+    {
+        basicShooter.Shoot(0);
+        laserShooter.Shoot(1, ShootBasic);
+    }
+
+    /// <summary>
+    /// Starts shooting the player's basic attack.
+    /// </summary>
+    public void ShootBasic()
+    {
+        basicShooter.Shoot(-1);
+        Debug.Log("ShootBasic Called");
     }
 
     /// <summary>

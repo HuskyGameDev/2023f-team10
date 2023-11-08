@@ -14,6 +14,11 @@ public class LaserBullet : Bullet
     private float startTime;
     private BoxCollider2D hitbox;
 
+    public float ChargeTime
+    {
+        get { return chargeTime; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +33,7 @@ public class LaserBullet : Bullet
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, 1), 0.1f * rotationSpeed);
+        transform.Rotate(new Vector3(0, 0, 1), rotationSpeed * Time.deltaTime);
         if (Time.time < chargeTime + startTime)
         {
             warningSR.color = new Color(warningSR.color.r, warningSR.color.b, warningSR.color.g, 0.25f * ((Time.time - startTime) / chargeTime));

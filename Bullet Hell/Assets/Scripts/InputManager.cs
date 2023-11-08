@@ -33,10 +33,15 @@ public class InputManager : MonoBehaviour
         inputDirection = new Vector2(horizontal, vertical);
         lastHeldDirection = mostRecentNonZeroInput();
 
-        if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.Space))
         {
             dash = true;
             dashDirection = mostRecentNonZeroInput();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            playerMovement.ChargeLaser();
         }
     }
 
