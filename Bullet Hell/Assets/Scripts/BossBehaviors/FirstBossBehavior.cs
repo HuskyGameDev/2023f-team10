@@ -1,54 +1,25 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
-[RequireComponent(typeof(BossMovement))]
-
-public class BossBehavior : MonoBehaviour
+public class FirstBossBehavior : BossBehavior
 {
-    private BossMovement movement;
-    [SerializeField] private List<Shooter> shooters = new();
-    private List<Action> actions = new();
-    private int called;
-    private int currentShooter;
-
     [SerializeField] private GameObject orbitalLaser;
+    private GameObject ol;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         actions.Add(XBehavior);
         actions.Add(OscBehavior);
-        movement = GetComponent<BossMovement>();
         movement.MoveTo(new Vector2(0, 2), 0.5f, NextBehavior);
-        currentShooter = 0;
     }
 
-    public void PickShooter()
+    public override void NextPhase()
     {
-        currentShooter = UnityEngine.Random.Range(0, shooters.Count);
-    }
-
-    public void NextBehavior()
-    {
-        int randBehavior = UnityEngine.Random.Range(0, actions.Count);
-        shooters[currentShooter].Shoot(0);
-        PickShooter();
-        called = 0;
-        movement.Wait(0.25f, actions[randBehavior]);
-    }
-
-    public void NextPhase()
-    {
-        foreach(Shooter shooter in shooters)
-        {
-            shooter.BurstInterval = shooter.BurstInterval * 0.75f;
-            shooter.RestTime = shooter.RestTime * 0.75f;
-        }
-        movement.Speed = movement.Speed * 1.25f;
-        orbitalLaser = Instantiate(orbitalLaser);
+        base.NextPhase();
+        ol = Instantiate(orbitalLaser);
+        destroyOnDeath.Add(ol);
     }
 
     public void OscBehavior()
@@ -84,21 +55,10 @@ public class BossBehavior : MonoBehaviour
                 movement.MoveTo(new Vector2(0, 2), 1, NextBehavior);
                 break;
             default:
-                movement.Wait(0.25f, XBehavior);
+                movement.Wait(waitTime, XBehavior);
                 shooters[currentShooter].Shoot(0);
                 break;
         }
         called++;
-    }
-
-    public void OnDeath()
-    {
-        Destroy(orbitalLaser);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

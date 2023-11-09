@@ -15,6 +15,6 @@ public class OrbitalLaserBehavior : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(Random.Range(-3.5f, 3.5f), transform.position.y, transform.position.z);
+        transform.position = new Vector3(Random.Range(-3.5f, 3.5f), 5, transform.position.z);
     }
 }

@@ -12,7 +12,7 @@ public class BossMovement : MonoBehaviour
     private float oscRate = 1;
     private Rigidbody2D rb;
     private enum MoveOptions { MoveTo, Oscillate, Wait, Finished };
-    private MoveOptions moveType;
+    private MoveOptions moveType = MoveOptions.Finished;
 
     private Vector2 targetPos;
     private Action callWhenFinished = null;
@@ -26,7 +26,6 @@ public class BossMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveType = MoveOptions.Finished;
     }
 
     /// <summary>
@@ -72,7 +71,6 @@ public class BossMovement : MonoBehaviour
         if(moveType != MoveOptions.Finished)
         {
             Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
-
             if (moveType == MoveOptions.MoveTo)
             {
                 if((targetPos - currentPos).magnitude < 0.1f)

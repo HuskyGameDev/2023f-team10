@@ -179,8 +179,8 @@ GameObject:
   - component: {fileID: 341002561}
   - component: {fileID: 341002559}
   - component: {fileID: 341002564}
-  - component: {fileID: 341002560}
   - component: {fileID: 341002558}
+  - component: {fileID: 341002567}
   - component: {fileID: 341002565}
   - component: {fileID: 341002566}
   m_Layer: 0
@@ -230,22 +230,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &341002560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341002557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1c9cf9d5a825bb4f93f9fe67bd2bcc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shooters:
-  - {fileID: 2112347755}
-  - {fileID: 1814085587}
-  orbitalLaser: {fileID: 4811786698059444113, guid: 28285fc002a29624e98814e6d5fe27cf, type: 3}
 --- !u!212 &341002561
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -394,6 +378,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathExplosion: {fileID: 8741291010684827892, guid: 87bc4099874b0c649bbee461c6168633, type: 3}
+--- !u!114 &341002567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341002557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2ec3112e1fdc04db52f617d4da4a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseOneShooters:
+  - {fileID: 2112347755}
+  - {fileID: 1814085587}
+  phaseTwoShooters: []
+  waitTime: 0.25
+  orbitalLaser: {fileID: 4811786698059444113, guid: 28285fc002a29624e98814e6d5fe27cf, type: 3}
 --- !u!1 &793140866
 GameObject:
   m_ObjectHideFlags: 0
