@@ -14,6 +14,12 @@ public class EnemyAttack : MonoBehaviour
 
     [SerializeField] string currentAttackPattern = "default";
 
+    //wait at least this long before doing an attack
+    [SerializeField] float waitToAttack = 0;
+
+    //used in other scripts to time attacks
+    public bool canAttack = true;
+
     //treat this like a set of kvp's where the key is the string representing the name of a preset for the shooter script (a bit complicated because unity doesn't display dictionaries in the editor)
     private Dictionary<string, Preset> presetsDict = new Dictionary<string, Preset>();
 
@@ -35,7 +41,7 @@ public class EnemyAttack : MonoBehaviour
     {
         shooterScript = GetComponent<Shooter>();
 
-        attackTimer = attackSpeed;
+        attackTimer = waitToAttack;
 
         //compile into a dictionary for convinience so we can call presets by name and don't have to remember index
         for(int i = 0; i < presetOptions.Length; i++) 
@@ -57,19 +63,26 @@ public class EnemyAttack : MonoBehaviour
     //use this to change the attack pattern during runtime
     public void doAttack()
     {
-        if(currentAttackPattern.Equals("default"))
+        if (canAttack)
         {
-            presetsDict["default"].ApplyTo(shooterScript);
-        }
-        else if(currentAttackPattern.Equals("Flare Burst"))
-        {
-            presetsDict["Flare Burst"].ApplyTo(shooterScript);
-        }
-        else if(currentAttackPattern.Equals("Wave"))
-        {
-            presetsDict["Wave"].ApplyTo(shooterScript);
-        }
+            if (currentAttackPattern.Equals("manual"))
+            {
+                //do nothing, this lets the shooting method be set manually in the editor
+            } 
+            else if (currentAttackPattern.Equals("default"))
+            {
+                presetsDict["default"].ApplyTo(shooterScript);
+            }
+            else if(currentAttackPattern.Equals("Flare Burst"))
+            {
+                presetsDict["Flare Burst"].ApplyTo(shooterScript);
+            }
+            else if(currentAttackPattern.Equals("Wave"))
+            {
+                presetsDict["Wave"].ApplyTo(shooterScript);
+            }
 
-        shooterScript.Shoot(1);
+            shooterScript.Shoot(1);
+        }
     }
 }

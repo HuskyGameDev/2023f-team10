@@ -11,6 +11,12 @@ using UnityEngine;
 */
 public class EnemyMovement : MonoBehaviour
 {
+    private EnemyAttack enemyAttackScript = null;
+
+    //give the unit some time to make an attack (otherwise the bool switches to fast for thigns to process)
+    [SerializeField] float timeForAttack = .5f;
+    private float currentAttackTimer = 0f;
+
     //randomhold is to have the enemy find a random position onscreen and hold position once it gets there
     private enum MoveOptions{VERTICAL, HORIZONTAL, DIAGONAL, ZIGZAG, RANDOMHOLD, RANDOM};
 
@@ -36,6 +42,11 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 direction = Vector3.up;
     public Vector3 target = Vector3.up;
 
+    private void Awake()
+    {
+        enemyAttackScript = GetComponent<EnemyAttack>();
+    }
+
     //updating on fixed update for consistent behavior
     private void FixedUpdate()
     {
@@ -58,6 +69,7 @@ public class EnemyMovement : MonoBehaviour
 
         //count the timer down every second
         secondTimer -= Time.fixedDeltaTime;
+        currentAttackTimer -= Time.fixedDeltaTime;
     }
 
     //used to countdown from a value in seconds
@@ -108,8 +120,11 @@ public class EnemyMovement : MonoBehaviour
     //has the object choose a random position within a given radius and then go there and remain until something else changes its position
     public void randomMovement()
     {
-        if (!foundSpot)
+        if (!foundSpot && currentAttackTimer <= 0)
         {
+            //don't attack until position is found/held
+            enemyAttackScript.canAttack = false;
+
             //pick a location within the given radius around the given target objects position
             Vector2 originPos = new Vector2(targetOrigin.transform.position.x, targetOrigin.transform.position.y);
             target = originPos + (UnityEngine.Random.insideUnitCircle * targetingRadius);
@@ -124,9 +139,16 @@ public class EnemyMovement : MonoBehaviour
         if (foundSpot && (target - transform.position).magnitude > .5)
         {
             transform.position += direction * speed * Time.fixedDeltaTime;
+            currentAttackTimer = timeForAttack;
         }
-        //if the target should find a new position to go to after getting where it's going
-        else if (moveType == MoveOptions.RANDOM)
-            foundSpot = false;
+        else
+        {
+            //now holding position so begin attacks
+            enemyAttackScript.canAttack = true;
+
+            //if the target should find a new position to go to after getting where it's going
+            if (moveType == MoveOptions.RANDOM)
+                foundSpot = false;
+        }
     }
 }
