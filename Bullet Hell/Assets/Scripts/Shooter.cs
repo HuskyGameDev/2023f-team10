@@ -24,6 +24,9 @@ public class Shooter : MonoBehaviour
     private bool shouldShoot = false;
     private int burstsLeft = 0;
 
+    public float BurstInterval { get { return burstInterval; } set { burstInterval = value; } }
+    public float RestTime { get { return restTime; } set { restTime = value; } }
+
     /// <summary>
     /// Tells the shooter script to begin shooting n burst groups.<br></br><br></br>
     /// 

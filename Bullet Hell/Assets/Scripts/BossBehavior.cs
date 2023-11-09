@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,12 +15,15 @@ public class BossBehavior : MonoBehaviour
     private int called;
     private int currentShooter;
 
+    [SerializeField] private GameObject orbitalLaser;
+
     void Start()
     {
         actions.Add(XBehavior);
         actions.Add(OscBehavior);
         movement = GetComponent<BossMovement>();
         movement.MoveTo(new Vector2(0, 2), 0.5f, NextBehavior);
+        currentShooter = 0;
     }
 
     public void PickShooter()
@@ -30,16 +34,33 @@ public class BossBehavior : MonoBehaviour
     public void NextBehavior()
     {
         int randBehavior = UnityEngine.Random.Range(0, actions.Count);
+        shooters[currentShooter].Shoot(0);
         PickShooter();
         called = 0;
         movement.Wait(0.25f, actions[randBehavior]);
     }
 
-    public void OscBehavior()
+    public void NextPhase()
     {
-        movement.Oscillate(4, Mathf.PI / 2, 1, NextBehavior);
+        foreach(Shooter shooter in shooters)
+        {
+            shooter.BurstInterval = shooter.BurstInterval * 0.75f;
+            shooter.RestTime = shooter.RestTime * 0.75f;
+        }
+        movement.Speed = movement.Speed * 1.25f;
+        orbitalLaser = Instantiate(orbitalLaser);
     }
 
+    public void OscBehavior()
+    {
+        movement.Oscillate(4, Mathf.PI / 2, 1, OscReset);
+        shooters[currentShooter].Shoot(-1);
+    }
+
+    public void OscReset()
+    {
+        movement.MoveTo(new Vector2(0, 2), 1, NextBehavior);
+    }
 
     public void XBehavior()
     {
@@ -50,21 +71,29 @@ public class BossBehavior : MonoBehaviour
                 break;
             case 2:
                 movement.MoveTo(new Vector2(2.75f, 3), 2, XBehavior);
+                shooters[currentShooter].Shoot(-1);
                 break;
             case 4:
                 movement.MoveTo(new Vector2(2.75f, 1), 2, XBehavior);
                 break;
             case 6:
                 movement.MoveTo(new Vector2(-2.75f, 3), 2, XBehavior);
+                shooters[currentShooter].Shoot(-1);
                 break;
             case 8:
                 movement.MoveTo(new Vector2(0, 2), 1, NextBehavior);
                 break;
             default:
                 movement.Wait(0.25f, XBehavior);
+                shooters[currentShooter].Shoot(0);
                 break;
         }
         called++;
+    }
+
+    public void OnDeath()
+    {
+        Destroy(orbitalLaser);
     }
 
     // Update is called once per frame

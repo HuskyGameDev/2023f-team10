@@ -5,19 +5,21 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private Healthbar healthbar;
-    [SerializeField] private float maxHealth;
-    private float currentHealth;
+    [SerializeField] protected float maxHealth;
+    protected float currentHealth;
 
     private DeathBehavior deathBehavior;
 
-    private void Start()
+    public float CurrentHealth { get { return currentHealth; } }
+
+    protected virtual void Start()
     {
         currentHealth = maxHealth;
         healthbar.SetHealth(currentHealth, maxHealth);
         deathBehavior = gameObject.GetComponent<DeathBehavior>();
     }
 
-    public void damage(float amount)
+    public virtual void damage(float amount)
     {
         currentHealth -= amount;
         if(currentHealth < 0)
@@ -52,8 +54,6 @@ public class Health : MonoBehaviour
             bullet.Hit();
 
             damage(bullet.Damage);
-
-            Debug.Log(currentHealth);
         }
     }
 }

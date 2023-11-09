@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3867732902142471574}
   - component: {fileID: 4223877940466880132}
   m_Layer: 6
-  m_Name: EnemyLaserBullet
+  m_Name: EnemyLaserRotating
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedc0b40841888344a1bb7776eea27ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 100
+  bulletDamage: 250
   fireSound: {fileID: 0}
   chargeTime: 1.5
   rotationSpeed: 30

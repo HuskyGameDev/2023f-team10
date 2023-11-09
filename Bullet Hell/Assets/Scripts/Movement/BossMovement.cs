@@ -20,6 +20,8 @@ public class BossMovement : MonoBehaviour
     private float startTime;
     private float finishTime;
 
+    public float Speed { get { return speed; } set {  speed = value; } }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +75,7 @@ public class BossMovement : MonoBehaviour
 
             if (moveType == MoveOptions.MoveTo)
             {
-                if((targetPos - currentPos).magnitude < 0.05f)
+                if((targetPos - currentPos).magnitude < 0.1f)
                 {
                     rb.velocity = Vector2.zero;
                     FinishMovement();
