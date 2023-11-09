@@ -10,10 +10,15 @@ using UnityEngine;
 public class BossBehavior : MonoBehaviour
 {
     protected BossMovement movement;
+
     [SerializeField] protected List<Shooter> phaseOneShooters = new();
     [SerializeField] protected List<Shooter> phaseTwoShooters = new();
     protected List<Shooter> shooters;
-    protected List<Action> actions = new();
+
+    protected List<Action> phaseOneActions = new();
+    protected List<Action> phaseTwoActions = new();
+    protected List<Action> actions;
+
     protected int called;
     protected int currentShooter;
     [SerializeField] protected float waitTime = 0.25f;
@@ -24,7 +29,7 @@ public class BossBehavior : MonoBehaviour
         shooters = new List<Shooter>(phaseOneShooters);
         movement = GetComponent<BossMovement>();
         currentShooter = 0;
-        Debug.Log("Base Start Done");
+        actions = new List<Action>(phaseOneActions);
     }
 
     public virtual void PickShooter()
@@ -52,6 +57,9 @@ public class BossBehavior : MonoBehaviour
         {
             shooters.Add(shooter);
         }
+        foreach(Action action in phaseTwoActions){
+            actions.Add(action);
+        }
         movement.Speed = movement.Speed * 1.25f;
         
         waitTime *= 0.5f;
@@ -63,7 +71,6 @@ public class BossBehavior : MonoBehaviour
         {
             if(g != null)
             {
-                Debug.Log("Destroying!");
                 Destroy(g);
             }
         }

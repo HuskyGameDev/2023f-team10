@@ -9,9 +9,10 @@ public class FirstBossBehavior : BossBehavior
 
     protected override void Start()
     {
+        phaseOneActions.Add(XBehavior);
+        phaseOneActions.Add(OscBehavior);
+        phaseTwoActions.Add(RandBehavior);
         base.Start();
-        actions.Add(XBehavior);
-        actions.Add(OscBehavior);
         movement.MoveTo(new Vector2(0, 2), 0.5f, NextBehavior);
     }
 
@@ -57,6 +58,27 @@ public class FirstBossBehavior : BossBehavior
             default:
                 movement.Wait(waitTime, XBehavior);
                 shooters[currentShooter].Shoot(0);
+                break;
+        }
+        called++;
+    }
+
+    public void RandBehavior()
+    {
+        switch (called < 5)
+        {
+            case true:
+                Vector2 randPos = new Vector2(Random.Range(-2.75f, 2.75f), Random.Range(1f, 3f));
+                while((new Vector3(randPos.x, randPos.y, transform.position.z) - transform.position).magnitude < 1.5)
+                {
+                    randPos = new Vector2(Random.Range(-2.75f, 2.75f), Random.Range(1f, 3f));
+                }
+                shooters[currentShooter].Shoot(-1);
+                movement.MoveTo(randPos, 2, RandBehavior);
+                break;
+            case false:
+                shooters[currentShooter].Shoot(0);
+                movement.Wait(1.5f, OscReset);
                 break;
         }
         called++;

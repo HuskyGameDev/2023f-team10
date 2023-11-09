@@ -163,7 +163,6 @@ public class PlayerMovement : MonoBehaviour
     public void ShootBasic()
     {
         basicShooter.Shoot(-1);
-        Debug.Log("ShootBasic Called");
     }
 
     /// <summary>
