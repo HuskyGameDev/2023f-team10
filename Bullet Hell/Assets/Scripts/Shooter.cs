@@ -36,7 +36,6 @@ public class Shooter : MonoBehaviour
         shouldShoot = n != 0;
         burstsLeft = n;
         callWhenFinished = null;
-        Debug.Log("Shoot " + n + " recieved");
     }
 
     /// <summary>
@@ -60,7 +59,6 @@ public class Shooter : MonoBehaviour
         {
             isShooting = true;
             StartCoroutine(ShootRoutine());
-            Debug.Log(burstsLeft);
             if(burstsLeft > 0)
             {
                 burstsLeft--;
@@ -129,7 +127,7 @@ public class Shooter : MonoBehaviour
         yield return new WaitForSeconds(restTime);
 
         LaserBullet laserBullet;
-        if ((laserBullet =  bulletPrefab.GetComponent<LaserBullet>()) != null)
+        if ((laserBullet = bulletPrefab.GetComponent<LaserBullet>()) != null && burstsLeft == 0)
         {
             yield return new WaitForSeconds(laserBullet.ChargeTime + 0.1f);
         }
