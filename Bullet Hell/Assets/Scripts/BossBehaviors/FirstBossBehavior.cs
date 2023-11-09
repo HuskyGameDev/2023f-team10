@@ -13,7 +13,6 @@ public class FirstBossBehavior : BossBehavior
         phaseOneActions.Add(OscBehavior);
         phaseTwoActions.Add(RandBehavior);
         base.Start();
-        movement.MoveTo(new Vector2(0, 2), 0.5f, NextBehavior);
     }
 
     public override void NextPhase()
@@ -31,7 +30,7 @@ public class FirstBossBehavior : BossBehavior
 
     public void OscReset()
     {
-        movement.MoveTo(new Vector2(0, 2), 1, NextBehavior);
+        movement.MoveTo(initialPosition, 1, NextBehavior);
     }
 
     public void XBehavior()
@@ -53,7 +52,7 @@ public class FirstBossBehavior : BossBehavior
                 shooters[currentShooter].Shoot(-1);
                 break;
             case 8:
-                movement.MoveTo(new Vector2(0, 2), 1, NextBehavior);
+                movement.MoveTo(initialPosition, 1, NextBehavior);
                 break;
             default:
                 movement.Wait(waitTime, XBehavior);

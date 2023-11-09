@@ -15,6 +15,7 @@ public class BossDeath : DeathBehavior
     public override void Die()
     {
         behavior.OnDeath();
+        EventManager.BossDefeated();
         base.Die();
     }
 }

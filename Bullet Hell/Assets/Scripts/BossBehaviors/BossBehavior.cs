@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
+    [SerializeField] protected Vector2 initialPosition;
+
     protected BossMovement movement;
 
     [SerializeField] protected List<Shooter> phaseOneShooters = new();
@@ -30,6 +32,7 @@ public class BossBehavior : MonoBehaviour
         movement = GetComponent<BossMovement>();
         currentShooter = 0;
         actions = new List<Action>(phaseOneActions);
+        movement.MoveTo(initialPosition, 0.5f, NextBehavior);
     }
 
     public virtual void PickShooter()

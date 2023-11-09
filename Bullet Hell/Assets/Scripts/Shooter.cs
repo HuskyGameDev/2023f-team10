@@ -26,6 +26,8 @@ public class Shooter : MonoBehaviour
 
     public float BurstInterval { get { return burstInterval; } set { burstInterval = value; } }
     public float RestTime { get { return restTime; } set { restTime = value; } }
+    public int BulletsPerBurst { get { return bulletsPerBurst; } set { bulletsPerBurst = value; } }
+    public float RotationPerBurst { get { return rotationPerBurst; } set { rotationPerBurst = value; } }
 
     /// <summary>
     /// Tells the shooter script to begin shooting n burst groups.<br></br><br></br>

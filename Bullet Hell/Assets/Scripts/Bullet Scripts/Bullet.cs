@@ -8,6 +8,16 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float bulletDamage;
     [SerializeField] private AudioClip fireSound;
 
+    void OnEnable()
+    {
+        EventManager.OnBossDefeated += ClearBullet;
+    }
+
+    void OnDisable()
+    {
+        EventManager.OnBossDefeated -= ClearBullet;
+    }
+
     public float Damage
     {
         get { return bulletDamage; }
@@ -21,5 +31,10 @@ public class Bullet : MonoBehaviour
     public AudioClip GetFireSound()
     {
         return fireSound;
+    }
+
+    private void ClearBullet()
+    {
+        Destroy(gameObject);
     }
 }
