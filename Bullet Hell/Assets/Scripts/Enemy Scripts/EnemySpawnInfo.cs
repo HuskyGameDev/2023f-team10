@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //this contains relevant information on enemies for spawning
-public class EnemySpawnInfo : MonoBehaviour
+public class EnemySpawnInfo
 {
     public GameObject enemyPrefab;
 

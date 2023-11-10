@@ -35,19 +35,14 @@ public class WaveManager : MonoBehaviour
         currentTimer -= Time.fixedDeltaTime;
     }
 
-    //gets a random location in the defined area (not working rn)
-    private Transform getRandomLocation()
+    //gets a random location in the defined area
+    private Vector3 getRandomLocation()
     {
         float randomX = Random.Range(spawnRange.bounds.min.x, spawnRange.bounds.max.x);
 
         float randomY = Random.Range(spawnRange.bounds.min.y, spawnRange.bounds.max.y);
 
-        Vector3 temp = new Vector3(randomX, randomY, 0);
-
-        Transform temp2 = spawnRange.transform;
-        temp2.position = temp;
-
-        return temp2;
+        return new Vector3(randomX, randomY, 0);
     }
 
     private int spawnBatch()
@@ -60,7 +55,7 @@ public class WaveManager : MonoBehaviour
         if (waveLevel >= 0)
         {
             earthCost += enemySpawningScript.spawnBasic().enemyPointValue;
-            Instantiate(enemySpawningScript.spawnBasic().enemyPrefab, getRandomLocation());
+            Instantiate(enemySpawningScript.spawnBasic().enemyPrefab, getRandomLocation(), new Quaternion(0, 0, 180, 0));
             currentTimer = timeBetweenSpawns;
         }
 
@@ -68,7 +63,7 @@ public class WaveManager : MonoBehaviour
         if (waveLevel >= 1)
         {
             earthCost += enemySpawningScript.spawnRandQuad().enemyPointValue;
-            Instantiate(enemySpawningScript.spawnRandQuad().enemyPrefab, getRandomLocation());
+            Instantiate(enemySpawningScript.spawnRandQuad().enemyPrefab, getRandomLocation(), new Quaternion(0, 0, 180, 0));
             currentTimer = timeBetweenSpawns;
         }
 
@@ -76,7 +71,7 @@ public class WaveManager : MonoBehaviour
         if (waveLevel >= 2)
         {
             earthCost += enemySpawningScript.spawnFlare().enemyPointValue;
-            Instantiate(enemySpawningScript.spawnFlare().enemyPrefab, getRandomLocation());
+            Instantiate(enemySpawningScript.spawnFlare().enemyPrefab, getRandomLocation(), new Quaternion(0,0, 180, 0));
             currentTimer = timeBetweenSpawns;
         }
 
