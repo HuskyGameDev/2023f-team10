@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class MovingBullet : Bullet
 {
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
-    [SerializeField] private float bulletSpeed;
+    public float bulletSpeed;
 
-    private void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.up * bulletSpeed;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Shooter : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float rotationPerBurst; // Change in angle per burst
     
     private Action callWhenFinished = null;
+    private GameObject target = null;
 
     private bool isShooting = false;
     private bool shouldShoot = false;
@@ -41,6 +43,7 @@ public class Shooter : MonoBehaviour
         shouldShoot = n != 0;
         burstsLeft = n;
         callWhenFinished = null;
+        target = null;
     }
 
     /// <summary>
@@ -53,9 +56,37 @@ public class Shooter : MonoBehaviour
     /// <param name="f">The function to call once all burst groups have been shot</param>
     public void Shoot(int n, Action f)
     {
-        shouldShoot = n != 0;
-        burstsLeft = n;
+        Shoot(n);
         callWhenFinished = f;
+    }
+
+    /// <summary>
+    /// Tells the shooter script to begin shooting n burst groups which will target the target.<br></br><br></br>
+    /// 
+    /// n = -1 will make it shoot continuously when called.<br></br>
+    /// n = 0 will stop the shooter from shooting after the current burst group has finished shooting.<br></br>
+    /// </summary>
+    /// <param name="n"></param>
+    /// <param name="target"></param>
+    public void Shoot(int n, GameObject target)
+    {
+        Shoot(n);
+        this.target = target;
+    }
+
+    /// <summary>
+    /// Tells the shooter script to begin shooting n burst groups which will target the target and call function f when done.<br></br><br></br>
+    /// 
+    /// n = -1 will make it shoot continuously when called.<br></br>
+    /// n = 0 will stop the shooter from shooting after the current burst group has finished shooting.<br></br>
+    /// </summary>
+    /// <param name="n"></param>
+    /// <param name="f"></param>
+    /// <param name="target"></param>
+    public void Shoot(int n, Action f, GameObject target)
+    {
+        Shoot(n, f);
+        this.target = target;
     }
 
     private void Update()
@@ -118,6 +149,11 @@ public class Shooter : MonoBehaviour
                 }
                 
                 newBullet.transform.Rotate(new Vector3(0, 0, 1), currentAngle + 90);
+                if(target != null && newBullet.GetComponent<RocketBullet>())
+                {
+                    RocketBullet rocketBullet = newBullet.GetComponent<RocketBullet>();
+                    rocketBullet.target = target;
+                }
 
                 currentAngle += angleStep;
             }

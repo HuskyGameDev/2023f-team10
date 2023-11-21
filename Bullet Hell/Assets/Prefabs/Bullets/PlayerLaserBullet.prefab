@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedc0b40841888344a1bb7776eea27ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 250
+  bulletDamage: 1000
   fireSound: {fileID: 0}
   chargeTime: 1.5
   rotationSpeed: 0

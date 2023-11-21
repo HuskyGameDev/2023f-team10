@@ -21,6 +21,7 @@ public class FollowHealthbar : Healthbar
 
     void Update()
     {
-        slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+        transform.position = transform.parent.position + offset;
+        transform.rotation = Camera.main.transform.rotation;
     }
 }
