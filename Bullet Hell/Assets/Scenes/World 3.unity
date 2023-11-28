@@ -166,7 +166,7 @@ SortingGroup:
   m_GameObject: {fileID: 24525650}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &24525653
@@ -277,7 +277,7 @@ SortingGroup:
   m_GameObject: {fileID: 135715976}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &135715979
@@ -388,7 +388,7 @@ SortingGroup:
   m_GameObject: {fileID: 331453985}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &331453988
@@ -465,6 +465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 377002619}
+  - component: {fileID: 377002620}
   m_Layer: 8
   m_Name: Scenery
   m_TagString: Untagged
@@ -500,6 +501,18 @@ Transform:
   - {fileID: 1985057800}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &377002620
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377002618}
+  m_Enabled: 1
+  m_SortingLayerID: -720618865
+  m_SortingLayer: -1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &579692904
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +557,7 @@ SortingGroup:
   m_GameObject: {fileID: 579692904}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &579692907
@@ -746,7 +759,7 @@ SortingGroup:
   m_GameObject: {fileID: 744256298}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &744256301
@@ -857,7 +870,7 @@ SortingGroup:
   m_GameObject: {fileID: 813004604}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &813004607
@@ -969,7 +982,7 @@ SortingGroup:
   m_GameObject: {fileID: 1069172072}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &1069172075
@@ -1079,7 +1092,7 @@ SortingGroup:
   m_GameObject: {fileID: 1101959970}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &1101959973
@@ -1190,7 +1203,7 @@ SortingGroup:
   m_GameObject: {fileID: 1517238005}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &1517238008
@@ -1302,7 +1315,7 @@ SortingGroup:
   m_GameObject: {fileID: 1544858245}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &1544858248
@@ -1412,7 +1425,7 @@ SortingGroup:
   m_GameObject: {fileID: 1975031969}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &1975031972
@@ -1524,7 +1537,7 @@ SortingGroup:
   m_GameObject: {fileID: 1979905047}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &1979905050
@@ -1634,7 +1647,7 @@ SortingGroup:
   m_GameObject: {fileID: 1985057799}
   m_Enabled: 1
   m_SortingLayerID: 1920632919
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &1985057802

@@ -1081,6 +1081,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 820792468}
+  - component: {fileID: 820792469}
   m_Layer: 8
   m_Name: Scenery
   m_TagString: Untagged
@@ -1118,6 +1119,18 @@ Transform:
   - {fileID: 436611718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &820792469
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820792467}
+  m_Enabled: 1
+  m_SortingLayerID: -720618865
+  m_SortingLayer: -1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &947214375
 GameObject:
   m_ObjectHideFlags: 0

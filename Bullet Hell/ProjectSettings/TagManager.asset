@@ -14,7 +14,7 @@ TagManager:
   - UI
   - EnemyBullet
   - PlayerBullet
-  - 
+  - BackgroundItems
   - 
   - 
   - 
@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackgroundItems
+    uniqueID: 3574348431
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
