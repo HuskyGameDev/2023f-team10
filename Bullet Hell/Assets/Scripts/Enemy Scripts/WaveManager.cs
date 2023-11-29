@@ -78,4 +78,19 @@ public class WaveManager : MonoBehaviour
 
         return earthCost+iceCost+fireCost;
     }
+
+    public void spawnWorld1()
+    {
+
+    }
+
+    public void spawnWorld2()
+    {
+
+    }
+
+    public void spawnWorld3()
+    {
+
+    }
 }

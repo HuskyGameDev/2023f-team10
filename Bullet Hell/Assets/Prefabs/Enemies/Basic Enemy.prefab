@@ -121,7 +121,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -154,14 +154,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instatiateAsChild: 0
   bulletPrefab: {fileID: 7371400616562743903, guid: 530c5ce40f3dc81489d1675f5948ec29, type: 3}
-  burstCount: 3
+  burstCount: 1
   bulletsPerBurst: 3
   angleSpread: 20
   startingDistance: 0.1
   startingDirection: {x: 0, y: -1}
   shotWidth: 0.1
   burstInterval: 0.15
-  restTime: 0.5
+  restTime: 2
   rotate: 1
   rotationPerBurst: 0
 --- !u!114 &8977082805758840241
