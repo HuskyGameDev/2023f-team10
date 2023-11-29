@@ -11,7 +11,9 @@ public class WaveManager : MonoBehaviour
     [SerializeField] int maxPointValue = 0;
     private int currentPointVal = 0;
     [SerializeField] int waveLevel = 0;
-    [SerializeField] GameObject setSpawnPoint;
+    [SerializeField] GameObject topSpawnZone;
+    [SerializeField] GameObject leftSpawnZone;
+    [SerializeField] GameObject rightSpawnZone;
 
     //this should be a rectangle/square object with a collider
     [SerializeField] Collider2D spawnRange;
