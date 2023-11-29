@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 1383240493271890088}
   - component: {fileID: 6749249513919457488}
   - component: {fileID: 43334448897667504}
+  - component: {fileID: 3663996233006553499}
   m_Layer: 0
   m_Name: Rand Quad Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,6 +234,33 @@ MonoBehaviour:
   targetOrigin: {fileID: 0}
   targetingRadius: 3
   target: {x: 0, y: 1, z: 0}
+--- !u!50 &3663996233006553499
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587299657722433823}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &8611646831365937270
 PrefabInstance:
   m_ObjectHideFlags: 0

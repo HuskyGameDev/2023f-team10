@@ -11,12 +11,11 @@ public class WaveManager : MonoBehaviour
     [SerializeField] int maxPointValue = 0;
     private int currentPointVal = 0;
     [SerializeField] int waveLevel = 0;
-    [SerializeField] GameObject topSpawnZone;
-    [SerializeField] GameObject leftSpawnZone;
-    [SerializeField] GameObject rightSpawnZone;
 
     //this should be a rectangle/square object with a collider
-    [SerializeField] Collider2D spawnRange;
+    [SerializeField] Collider2D topSpawnZone;
+    [SerializeField] Collider2D leftSpawnZone;
+    [SerializeField] Collider2D rightSpawnZone;
 
     [SerializeField] float timeBetweenSpawns = 0;
     private float currentTimer = 0;
@@ -38,11 +37,11 @@ public class WaveManager : MonoBehaviour
     }
 
     //gets a random location in the defined area
-    private Vector3 getRandomLocation()
+    private Vector3 getRandomTopLocation()
     {
-        float randomX = Random.Range(spawnRange.bounds.min.x, spawnRange.bounds.max.x);
+        float randomX = Random.Range(topSpawnZone.bounds.min.x, topSpawnZone.bounds.max.x);
 
-        float randomY = Random.Range(spawnRange.bounds.min.y, spawnRange.bounds.max.y);
+        float randomY = Random.Range(topSpawnZone.bounds.min.y, topSpawnZone.bounds.max.y);
 
         return new Vector3(randomX, randomY, 0);
     }
@@ -57,7 +56,7 @@ public class WaveManager : MonoBehaviour
         if (waveLevel >= 0)
         {
             earthCost += enemySpawningScript.spawnBasic().enemyPointValue;
-            Instantiate(enemySpawningScript.spawnBasic().enemyPrefab, getRandomLocation(), new Quaternion(0, 0, 180, 0));
+            Instantiate(enemySpawningScript.spawnBasic().enemyPrefab, getRandomTopLocation(), new Quaternion(0, 0, 180, 0));
             currentTimer = timeBetweenSpawns;
         }
 
@@ -65,7 +64,7 @@ public class WaveManager : MonoBehaviour
         if (waveLevel >= 1)
         {
             earthCost += enemySpawningScript.spawnRandQuad().enemyPointValue;
-            Instantiate(enemySpawningScript.spawnRandQuad().enemyPrefab, getRandomLocation(), new Quaternion(0, 0, 180, 0));
+            Instantiate(enemySpawningScript.spawnRandQuad().enemyPrefab, getRandomTopLocation(), new Quaternion(0, 0, 180, 0));
             currentTimer = timeBetweenSpawns;
         }
 
@@ -73,7 +72,7 @@ public class WaveManager : MonoBehaviour
         if (waveLevel >= 2)
         {
             earthCost += enemySpawningScript.spawnFlare().enemyPointValue;
-            Instantiate(enemySpawningScript.spawnFlare().enemyPrefab, getRandomLocation(), new Quaternion(0,0, 180, 0));
+            Instantiate(enemySpawningScript.spawnFlare().enemyPrefab, getRandomTopLocation(), new Quaternion(0,0, 180, 0));
             currentTimer = timeBetweenSpawns;
         }
 

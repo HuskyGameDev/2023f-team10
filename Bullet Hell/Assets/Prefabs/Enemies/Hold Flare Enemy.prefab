@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 3811934456220148352}
   - component: {fileID: 7191216517882042553}
   - component: {fileID: 185107037087221230}
+  - component: {fileID: -6976835753992986136}
   m_Layer: 0
   m_Name: Hold Flare Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,6 +234,33 @@ MonoBehaviour:
   targetOrigin: {fileID: 0}
   targetingRadius: 3
   target: {x: 0, y: 1, z: 0}
+--- !u!50 &-6976835753992986136
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274674083073249466}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &6903862761060675772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,6 +272,26 @@ PrefabInstance:
     - target: {fileID: 342246622490641013, guid: b7a7e3f29801f4a479e66fa1474152ee, type: 3}
       propertyPath: m_Name
       value: Enemy Healthbar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625078505372509288, guid: b7a7e3f29801f4a479e66fa1474152ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147484880267235801, guid: b7a7e3f29801f4a479e66fa1474152ee, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147484880267235801, guid: b7a7e3f29801f4a479e66fa1474152ee, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6130835576492598807, guid: b7a7e3f29801f4a479e66fa1474152ee, type: 3}
+      propertyPath: m_Value
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6130835576492598807, guid: b7a7e3f29801f4a479e66fa1474152ee, type: 3}
+      propertyPath: m_MaxValue
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6133556010058999002, guid: b7a7e3f29801f4a479e66fa1474152ee, type: 3}
       propertyPath: m_AnchorMax.x
