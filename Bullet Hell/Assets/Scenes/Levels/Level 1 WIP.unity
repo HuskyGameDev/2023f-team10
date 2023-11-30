@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 9963060}
   - component: {fileID: 9963059}
   - component: {fileID: 9963058}
+  - component: {fileID: 9963061}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -784,7 +785,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 1
-    maxNumParticles: 1000
+    maxNumParticles: 1200
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -1050,7 +1051,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 500
+      scalar: 600
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1067,21 +1068,21 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0.39112967
           value: 0.98648643
-          inSlope: 0.4198848
-          outSlope: 0.4198848
+          inSlope: 2.851802
+          outSlope: 2.851802
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.15049508
+          inWeight: 0.13326646
           outWeight: 0.17245466
         - serializedVersion: 3
           time: 0.7643738
           value: 1
-          inSlope: 0.0000018593893
-          outSlope: 0.0000018593893
+          inSlope: -3.9313588
+          outSlope: -3.9313588
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.17116801
-          outWeight: 0.33333334
+          outWeight: 0.23341146
         - serializedVersion: 3
           time: 1
           value: 0
@@ -4969,6 +4970,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!210 &9963061
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9963057}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &37182341
 GameObject:
   m_ObjectHideFlags: 0

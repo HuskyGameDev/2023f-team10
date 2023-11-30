@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
         waveManager = GetComponent<WaveManager>();
 
         // Start the first wave
-        Invoke(nameof(checkWave), 3f); // Delay the first wave by 3 seconds
+        Invoke(nameof(checkWave), 3.5f); // Delay the first wave by 3 seconds
 
     }
 

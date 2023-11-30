@@ -45,6 +45,9 @@ TagManager:
   - name: BackgroundItems
     uniqueID: 3574348431
     locked: 0
+  - name: Warp
+    uniqueID: 1567332757
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
