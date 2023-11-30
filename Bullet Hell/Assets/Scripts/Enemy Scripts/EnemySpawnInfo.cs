@@ -13,10 +13,14 @@ public class EnemySpawnInfo
     //how expensive is this (proportional to the difficulty of this enemy)
     public int enemyPointValue;
 
-    public EnemySpawnInfo(GameObject enemyPrefab, int enemyLevel, int enemyPointValue)
+    public enum SpawnArea { Top = 0, Left = 1, Right = 2 };
+    public SpawnArea spawnLocation;
+
+    public EnemySpawnInfo(GameObject enemyPrefab, int enemyLevel, int enemyPointValue, SpawnArea spawnLocation)
     {
         this.enemyPrefab = enemyPrefab;
         this.enemyLevel = enemyLevel;
         this.enemyPointValue = enemyPointValue;
+        this.spawnLocation = spawnLocation;
     }
 }

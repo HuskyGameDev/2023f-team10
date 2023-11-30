@@ -36,12 +36,32 @@ public class WaveManager : MonoBehaviour
         currentTimer -= Time.fixedDeltaTime;
     }
 
-    //gets a random location in the defined area
+    //gets a random location at the top of the screen (based on what collider is passed though)
     private Vector3 getRandomTopLocation()
     {
         float randomX = Random.Range(topSpawnZone.bounds.min.x, topSpawnZone.bounds.max.x);
 
         float randomY = Random.Range(topSpawnZone.bounds.min.y, topSpawnZone.bounds.max.y);
+
+        return new Vector3(randomX, randomY, 0);
+    }
+
+    //gets a random location at the left of the screen (based on what collider is passed though)
+    private Vector3 getRandomLeftLocation()
+    {
+        float randomX = Random.Range(leftSpawnZone.bounds.min.x, leftSpawnZone.bounds.max.x);
+
+        float randomY = Random.Range(leftSpawnZone.bounds.min.y, leftSpawnZone.bounds.max.y);
+
+        return new Vector3(randomX, randomY, 0);
+    }
+
+    //gets a random location at the right of the screen (based on what collider is passed though)
+    private Vector3 getRandomRightLocation()
+    {
+        float randomX = Random.Range(rightSpawnZone.bounds.min.x, rightSpawnZone.bounds.max.x);
+
+        float randomY = Random.Range(rightSpawnZone.bounds.min.y, rightSpawnZone.bounds.max.y);
 
         return new Vector3(randomX, randomY, 0);
     }
@@ -79,18 +99,53 @@ public class WaveManager : MonoBehaviour
         return earthCost+iceCost+fireCost;
     }
 
-    public void spawnWorld1()
+    //spawns a wave of level enemies for a given level
+    public void spawnWave(int level)
     {
+        while (currentPointVal < maxPointValue && currentTimer <= 0)
+        {
+            EnemySpawnInfo enemyInfo = pickEnemy(level);
 
+            GameObject enemy = enemyInfo.enemyPrefab;
+            currentPointVal += enemyInfo.enemyPointValue;
+
+            //instantiate the enemy at the correct spawn location (top, left, or right)
+            switch (enemyInfo.spawnLocation)
+            {
+                case EnemySpawnInfo.SpawnArea.Top:
+                    Instantiate(enemy, getRandomTopLocation(), new Quaternion(0, 0, 180, 0));
+                    break;
+                case EnemySpawnInfo.SpawnArea.Left:
+                    Instantiate(enemy, getRandomLeftLocation(), new Quaternion(0, 0, 180, 0));
+                    break;
+                case EnemySpawnInfo.SpawnArea.Right:
+                    Instantiate(enemy, getRandomRightLocation(), new Quaternion(0, 0, 180, 0));
+                    break;
+            }
+        }
     }
 
-    public void spawnWorld2()
+    //this will randomly select a type of enemy up to the current level (only picks lvl 1's on the first stage but can still pick lvl 1 enemies on stage 3)
+    private EnemySpawnInfo pickEnemy(int difficulty)
     {
+        int thisDiff = Random.Range(1, difficulty);
+        int enemyIndex = 0;
 
-    }
+        switch(thisDiff)
+        {
+            case 1:
+                enemyIndex = Random.Range(0, enemySpawningScript.availableEarthEnemies);
+                return enemySpawningScript.lvlOneEnemies[enemyIndex];
 
-    public void spawnWorld3()
-    {
+            case 2:
+                enemyIndex = Random.Range(0, enemySpawningScript.availableIceEnemies);
+                return enemySpawningScript.lvlTwoEnemies[enemyIndex];
 
+            case 3:
+                enemyIndex = Random.Range(0, enemySpawningScript.availableFireEnemies);
+                return enemySpawningScript.lvlThreeEnemies[enemyIndex];
+        }
+
+        return null;
     }
 }

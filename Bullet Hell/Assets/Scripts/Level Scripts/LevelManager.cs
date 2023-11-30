@@ -14,9 +14,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject[] backgrounds;
     [SerializeField] SpriteRenderer warpBackground;
     private float red, green, blue, count;
-    bool finishedTransition = false;
 
-    private enum LevelTypes { WORLD1 = 0, WORLD2 = 1, WORLD3 = 2 };
+    public enum LevelTypes { WORLD1 = 0, WORLD2 = 1, WORLD3 = 2 };
 
     private LevelTypes currentLevel = LevelTypes.WORLD1;
     private int wavesCompleted = 0;
@@ -35,7 +34,7 @@ public class LevelManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            changeLevel(LevelTypes.WORLD1);
+            changeLevel(LevelTypes.WORLD2);
         }
     }
 
@@ -51,7 +50,7 @@ public class LevelManager : MonoBehaviour
                     bossLevel();
                 }
                 else
-                    waveManager.spawnWorld1();
+                    waveManager.spawnWave(1);
 
                 break;
 
@@ -62,7 +61,7 @@ public class LevelManager : MonoBehaviour
                     bossLevel();
                 }
                 else
-                    waveManager.spawnWorld2();
+                    waveManager.spawnWave(2);
 
                 break;
 
@@ -73,7 +72,7 @@ public class LevelManager : MonoBehaviour
                     bossLevel();
                 }
                 else
-                    waveManager.spawnWorld3();
+                    waveManager.spawnWave(3);
 
                 break;
         }
@@ -90,7 +89,7 @@ public class LevelManager : MonoBehaviour
     }
 
     //change background with warp transition
-    private void changeLevel(LevelTypes newLevel)
+    public void changeLevel(LevelTypes newLevel)
     {
         //update current level for the rest of the script
         currentLevel = newLevel;
@@ -108,8 +107,12 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            backgrounds[(int)currentLevel++].SetActive(true);
-            backgrounds[(int)currentLevel].SetActive(false);
+            for(int i = 0; i < 3; i++) 
+            {
+                backgrounds[i].SetActive(false);
+            }
+
+            backgrounds[(int)currentLevel].SetActive(true);
             InvokeRepeating("fadeOut", 1, .01f);
         }
 

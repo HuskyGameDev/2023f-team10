@@ -17,13 +17,49 @@ public class EnemySpawning : MonoBehaviour
     [NonSerialized] public int availableIceEnemies = 0;
     [NonSerialized] public int availableFireEnemies = 0;
 
+    public EnemySpawnInfo[] lvlOneEnemies = null;
+    public EnemySpawnInfo[] lvlTwoEnemies = null;
+    public EnemySpawnInfo[] lvlThreeEnemies = null;
+
     private void Start()
     {
         availableEarthEnemies = earthEnemyPrefabs.Length;
         availableIceEnemies = iceEnemyPrefabs.Length;
         availableFireEnemies = fireEnemyPrefabs.Length;
+
+        lvlOneEnemies = new EnemySpawnInfo[availableEarthEnemies];
+
     }
 
+    //will populate the level one enemies (all at cost 1 + index by default)
+    private void populateLevelOne()
+    {
+        for(int i = 0; i < availableEarthEnemies; i++)
+        {
+            lvlOneEnemies[i] = new EnemySpawnInfo(earthEnemyPrefabs[i], 0, 1+i, EnemySpawnInfo.SpawnArea.Top);
+        }
+    }
+
+    //will populate the level one enemies (all at cost 1 + index by default)
+    private void populateLevelTwo()
+    {
+        for (int i = 0; i < availableIceEnemies; i++)
+        {
+            lvlTwoEnemies[i] = new EnemySpawnInfo(iceEnemyPrefabs[i], 0, 1+ i, EnemySpawnInfo.SpawnArea.Top);
+        }
+    }
+
+    //will populate the level one enemies (all at cost 1 + index by default)
+    private void populateLevelThree()
+    {
+        for (int i = 0; i < availableFireEnemies; i++)
+        {
+            lvlThreeEnemies[i] = new EnemySpawnInfo(fireEnemyPrefabs[i], 0, 1+ i, EnemySpawnInfo.SpawnArea.Top);
+        }
+    }
+
+
+    //TODO: delete this after replacing these scripts
 
     //earth enemies
     public EnemySpawnInfo spawnBasic()
