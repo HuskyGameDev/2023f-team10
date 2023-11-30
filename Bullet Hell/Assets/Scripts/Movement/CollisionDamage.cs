@@ -6,15 +6,22 @@ public class CollisionDamage : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //damage player
-        this.GetComponent<Health>().damage(100);
-
-        //damage enemy
         if (collision.CompareTag("Enemy"))
-            collision.gameObject.GetComponent<EnemyBasicDeath>().Die();
+        {
+            //damage player
+            this.GetComponent<Health>().damage(100);
 
-        //damage boss
+            //damage enemy
+            collision.gameObject.GetComponent<EnemyBasicDeath>().Die();
+        }
+
         else if (collision.CompareTag("Boss"))
+        {
+            //damage player
+            this.GetComponent<Health>().damage(100);
+
+            //damage boss
             collision.gameObject.GetComponent<Health>().damage(100);
+        }
     }
 }

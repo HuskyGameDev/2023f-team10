@@ -1415,6 +1415,10 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4069701647667688842, guid: 3f156741789049c4cb06185ffb78e22d, type: 3}
+      propertyPath: maxSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4122106183590959627, guid: 3f156741789049c4cb06185ffb78e22d, type: 3}
       propertyPath: restTime
       value: 1
@@ -1433,11 +1437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7733418926517490361, guid: 3f156741789049c4cb06185ffb78e22d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7733418926517490361, guid: 3f156741789049c4cb06185ffb78e22d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 7733418926517490361, guid: 3f156741789049c4cb06185ffb78e22d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2590,6 +2594,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 427820957}
     m_Modifications:
+    - target: {fileID: 6421850910767926947, guid: ee326b2225f51be4e8ee9dfd641effe4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7132997354795074400, guid: ee326b2225f51be4e8ee9dfd641effe4, type: 3}
       propertyPath: m_Name
       value: World 1

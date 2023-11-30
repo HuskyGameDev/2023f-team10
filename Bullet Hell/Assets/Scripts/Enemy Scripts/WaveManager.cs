@@ -78,6 +78,7 @@ public class WaveManager : MonoBehaviour
     //spawns a wave of level enemies for a given level
     public void spawnWave(int level)
     {
+        CancelInvoke();
         this.level = level;
 
         InvokeRepeating("spawnWaveForReal", 0, timeBetweenSpawns);
@@ -116,8 +117,8 @@ public class WaveManager : MonoBehaviour
     //this will randomly select a type of enemy up to the current level (only picks lvl 1's on the first stage but can still pick lvl 1 enemies on stage 3)
     private EnemySpawnInfo pickEnemy(int difficulty)
     {
-        int thisDiff = Random.Range(1, difficulty+1);
-        Debug.Log(thisDiff);
+        int thisDiff = Mathf.Clamp( Random.Range(1,difficulty+1) + Random.Range(0, 3), 1, difficulty );
+
         int enemyIndex = 0;
 
         switch(thisDiff)
