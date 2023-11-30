@@ -85,12 +85,15 @@ public class LevelManager : MonoBehaviour
     {
         //spawn boss
         Instantiate(bosses[(int) currentLevel], bossSpawnPoint.transform);
+    }
 
+    public void onBossDefeat()
+    {
         //if boss is defeated switch level
-        //changeLevel(currentLevel++);
+        changeLevel((LevelTypes)((int)(++currentLevel) % 3));
 
         //spawn the next wave after the boss is defeated
-        //checkWave();
+        checkWave();
     }
 
     //change background with warp transition

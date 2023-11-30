@@ -12,7 +12,6 @@ public class WaveManager : MonoBehaviour
     [SerializeField] int maxPointValue = 0;
     [SerializeField] int pointLevelIncrease = 5;
     private int currentPointVal = 0;
-    [SerializeField] int waveLevel = 0;
 
     //this should be a rectangle/square object with a collider
     [SerializeField] Collider2D topSpawnZone;
@@ -22,6 +21,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] float timeBetweenSpawns = 0;
 
     private bool waveDone = false;
+    private int level = 0;
 
 
     // Start is called before the first frame update
@@ -78,14 +78,13 @@ public class WaveManager : MonoBehaviour
     //spawns a wave of level enemies for a given level
     public void spawnWave(int level)
     {
-        if (level == 1)
-            InvokeRepeating("spawnLevelOne", 0, timeBetweenSpawns);
+        this.level = level;
+
+        InvokeRepeating("spawnWaveForReal", 0, timeBetweenSpawns);
     }
 
-    private void spawnLevelOne()
+    private void spawnWaveForReal()
     {
-        int level = 1;
-
         if (currentPointVal < maxPointValue)
         {
             EnemySpawnInfo enemyInfo = pickEnemy(level);
@@ -112,7 +111,6 @@ public class WaveManager : MonoBehaviour
             waveDone = true;
             CancelInvoke();
         }
-
     }
 
     //this will randomly select a type of enemy up to the current level (only picks lvl 1's on the first stage but can still pick lvl 1 enemies on stage 3)
