@@ -11,7 +11,7 @@ public class BossMovement : MonoBehaviour
     private float speedMult = 1;
     private float oscRate = 1;
     private Rigidbody2D rb;
-    private enum MoveOptions { MoveTo, Oscillate, Wait, Finished };
+    private enum MoveOptions { MoveTo, Oscillate, Wait, Teleport, Circle, Finished };
     private MoveOptions moveType = MoveOptions.Finished;
 
     private Vector2 targetPos;
@@ -19,6 +19,9 @@ public class BossMovement : MonoBehaviour
 
     private float startTime;
     private float finishTime;
+
+    private float circleRadius;
+    private bool circleStarted = false;
 
     public float Speed { get { return speed; } set {  speed = value; } }
 
@@ -66,6 +69,22 @@ public class BossMovement : MonoBehaviour
         moveType = MoveOptions.Wait;
     }
 
+    public void Teleport(Vector2 pos, Action f)
+    {
+        moveType = MoveOptions.Teleport;
+        callWhenFinished = f;
+        targetPos = pos;
+    }
+
+    public void Circle(int revolutions, Action f)
+    {
+        moveType = MoveOptions.Circle;
+        callWhenFinished = f;
+        circleRadius = transform.position.y;
+        finishTime = (revolutions * 2 * Mathf.PI * circleRadius / speed) + Time.time;
+        circleStarted = false;
+    }
+
     void FixedUpdate()
     {
         if(moveType != MoveOptions.Finished)
@@ -100,6 +119,32 @@ public class BossMovement : MonoBehaviour
             else if(moveType == MoveOptions.Wait && finishTime <= Time.time)
             {
                 FinishMovement();
+            }
+            else if(moveType == MoveOptions.Teleport)
+            {
+                rb.velocity = Vector2.zero;
+                transform.position = new Vector3(targetPos.x, targetPos.y, transform.position.z);
+                FinishMovement();
+            }
+            else if(moveType == MoveOptions.Circle)
+            {
+                if (!circleStarted)
+                {
+                    rb.velocity = new Vector2(speed, 0);
+                    circleStarted = true;
+                }
+
+                if(finishTime <= Time.time)
+                {
+                    rb.velocity = Vector2.zero;
+                    FinishMovement();
+                }
+                else
+                {
+                    Vector2 vTowardCenter = Vector2.zero - new Vector2(transform.position.x, transform.position.y);
+                    float force = speed * speed / circleRadius;
+                    rb.AddForce(vTowardCenter.normalized * force);
+                }
             }
 
             if (rb.velocity.magnitude > speed)

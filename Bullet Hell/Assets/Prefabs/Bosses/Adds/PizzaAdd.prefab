@@ -105,14 +105,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instatiateAsChild: 1
   bulletPrefab: {fileID: 8029698876698146647, guid: 38b5496e8407255439da9964358fc4d0, type: 3}
-  burstCount: 6
+  burstCount: 3
   bulletsPerBurst: 8
   angleSpread: 315
   startingDistance: 0.1
   startingDirection: {x: 0, y: -1}
   shotWidth: 0
   burstInterval: 3.5
-  restTime: 5
+  restTime: 3
   rotate: 0
   rotationPerBurst: 0
 --- !u!114 &3769795316220972285
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: 5
-  rotationAmount: 30
+  rotationAmount: 20
 --- !u!50 &794830622419646698
 Rigidbody2D:
   serializedVersion: 4

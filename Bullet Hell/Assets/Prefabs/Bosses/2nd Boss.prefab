@@ -1,5 +1,61 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2313324386626855710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6400038746241941703}
+  - component: {fileID: 5057773766705444154}
+  m_Layer: 0
+  m_Name: RocketL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6400038746241941703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2313324386626855710}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5063701094137153652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5057773766705444154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2313324386626855710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4949598f2b4fec4c8cfe8e79b9063b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instatiateAsChild: 0
+  bulletPrefab: {fileID: 1937768380327796375, guid: 7fb5764e6f81d104fb73956d9e8fa067, type: 3}
+  burstCount: 1
+  bulletsPerBurst: 25
+  angleSpread: 120
+  startingDistance: 0.25
+  startingDirection: {x: 0, y: -1}
+  shotWidth: 0
+  burstInterval: 0.2
+  restTime: 0
+  rotate: 1
+  rotationPerBurst: 0
 --- !u!1 &5465838748895496654
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,6 +111,62 @@ MonoBehaviour:
   burstInterval: 0.2
   restTime: 0
   rotate: 0
+  rotationPerBurst: 0
+--- !u!1 &5622443997688901209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7349781755127395009}
+  - component: {fileID: 4180549334626078343}
+  m_Layer: 0
+  m_Name: RocketM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7349781755127395009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622443997688901209}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5063701094137153652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4180549334626078343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622443997688901209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4949598f2b4fec4c8cfe8e79b9063b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instatiateAsChild: 0
+  bulletPrefab: {fileID: 7371400616562743903, guid: 530c5ce40f3dc81489d1675f5948ec29, type: 3}
+  burstCount: 1
+  bulletsPerBurst: 12
+  angleSpread: 135
+  startingDistance: 0.25
+  startingDirection: {x: 0, y: -1}
+  shotWidth: 0
+  burstInterval: 1.5
+  restTime: 0
+  rotate: 1
   rotationPerBurst: 0
 --- !u!1 &7208261789869249173
 GameObject:
@@ -151,6 +263,9 @@ Transform:
   - {fileID: 5295811308031852633}
   - {fileID: 3166918913832149844}
   - {fileID: 143561269346577210}
+  - {fileID: 6400038746241941703}
+  - {fileID: 7349781755127395009}
+  - {fileID: 3807559777731026266}
   - {fileID: 2357487448761935102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
@@ -304,9 +419,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPosition: {x: 0, y: 2.5}
-  phaseOneShooters: []
+  phaseOneShooters:
+  - {fileID: 2812749228834841547}
+  - {fileID: 310852571767784121}
+  - {fileID: 4793664354856380810}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   phaseTwoShooters: []
   waitTime: 0.25
+  circleFireRate: 1.175
+  circleFireAmount: 15
+  rocketFireRate: 2.5
+  rocketFireAmount: 5
+  add: {fileID: 3660832554021805219, guid: 260bc1848c5b41e45a72ad35617966ae, type: 3}
 --- !u!114 &5359489611242622329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +515,62 @@ MonoBehaviour:
   burstInterval: 0.2
   restTime: 0
   rotate: 0
+  rotationPerBurst: 0
+--- !u!1 &8095654844189178368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3807559777731026266}
+  - component: {fileID: 8107904254929152796}
+  m_Layer: 0
+  m_Name: RocketR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3807559777731026266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8095654844189178368}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5063701094137153652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8107904254929152796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8095654844189178368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4949598f2b4fec4c8cfe8e79b9063b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instatiateAsChild: 0
+  bulletPrefab: {fileID: 1937768380327796375, guid: 7fb5764e6f81d104fb73956d9e8fa067, type: 3}
+  burstCount: 1
+  bulletsPerBurst: 25
+  angleSpread: 120
+  startingDistance: 0.25
+  startingDirection: {x: 0, y: -1}
+  shotWidth: 0
+  burstInterval: 0.2
+  restTime: 0
+  rotate: 1
   rotationPerBurst: 0
 --- !u!1001 &4345903216199045641
 PrefabInstance:

@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class RocketBullet : MovingBullet
+[RequireComponent(typeof(Rigidbody2D))]
+
+public class RocketBullet : Bullet
 {
+    private Rigidbody2D rb;
+
+    public float bulletSpeed;
+
     [SerializeField] private float lifetime = 2;
     public float maxAdjustment;
 
@@ -12,10 +18,11 @@ public class RocketBullet : MovingBullet
 
     public GameObject target;
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
+        rb = GetComponent<Rigidbody2D>();
         deathtime = Time.time + lifetime;
+        rb.velocity = transform.up * bulletSpeed / 10;
     }
 
     private void FixedUpdate()
@@ -30,7 +37,12 @@ public class RocketBullet : MovingBullet
             float adjustment = Mathf.Sign(angle) * Mathf.Min(maxAdjustment, Mathf.Abs(angle));
 
             transform.Rotate(new Vector3(0, 0, 1), adjustment);
-            rb.velocity = transform.up * bulletSpeed;
+            Vector2 upVec = new Vector2(transform.up.x, transform.up.y);
+            rb.AddForce(upVec.normalized * Mathf.Min(bulletSpeed / (1 + Mathf.Abs(angle) / 10), 5));
+        }
+        if(rb.velocity.magnitude > bulletSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * bulletSpeed;
         }
     }
 
@@ -40,5 +52,11 @@ public class RocketBullet : MovingBullet
         {
             Hit();
         }
+    }
+
+    public override void Hit()
+    {
+        // TODO: add a hit sound.
+        Destroy(gameObject);
     }
 }

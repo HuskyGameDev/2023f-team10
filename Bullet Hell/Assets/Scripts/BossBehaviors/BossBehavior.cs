@@ -20,6 +20,7 @@ public class BossBehavior : MonoBehaviour
     protected List<Action> phaseOneActions = new();
     protected List<Action> phaseTwoActions = new();
     protected List<Action> actions;
+    private Action previousAction = null;
 
     protected int called;
     protected int currentShooter;
@@ -30,20 +31,28 @@ public class BossBehavior : MonoBehaviour
     {
         shooters = new List<Shooter>(phaseOneShooters);
         movement = GetComponent<BossMovement>();
-        currentShooter = 0;
+        currentShooter = -1;
         actions = new List<Action>(phaseOneActions);
         movement.MoveTo(initialPosition, 0.5f, NextBehavior);
     }
 
     public virtual void PickShooter()
     {
+        if(shooters.Count <= 0) { return; }
         currentShooter = UnityEngine.Random.Range(0, shooters.Count);
     }
 
     public virtual void NextBehavior()
     {
         int randBehavior = UnityEngine.Random.Range(0, actions.Count);
-        shooters[currentShooter].Shoot(0);
+        if (actions[randBehavior] == previousAction)
+        {
+            randBehavior = UnityEngine.Random.Range(0, actions.Count);
+        }
+        if(currentShooter >= 0)
+        {
+            shooters[currentShooter].Shoot(0);
+        }
         PickShooter();
         called = 0;
         movement.Wait(waitTime, actions[randBehavior]);

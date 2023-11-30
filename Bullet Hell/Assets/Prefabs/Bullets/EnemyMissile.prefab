@@ -129,9 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 50
   fireSound: {fileID: 0}
-  bulletSpeed: 2
-  lifetime: 3.5
-  maxAdjustment: 0.4
+  bulletSpeed: 4
+  lifetime: 5
+  maxAdjustment: 1.75
   target: {fileID: 0}
 --- !u!60 &7917065322815678256
 PolygonCollider2D:
