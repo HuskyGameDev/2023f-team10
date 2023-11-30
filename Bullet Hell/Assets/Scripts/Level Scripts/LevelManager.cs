@@ -12,8 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject bossSpawnPoint;
 
     [SerializeField] GameObject[] backgrounds;
-    [SerializeField] SpriteRenderer warpBackground;
-    private float red, green, blue, count;
+    [SerializeField] ParticleSystem warpBackground;
 
     public enum LevelTypes { WORLD1 = 0, WORLD2 = 1, WORLD3 = 2 };
 
@@ -24,19 +23,17 @@ public class LevelManager : MonoBehaviour
     {
         waveManager = GetComponent<WaveManager>();
 
-        red = warpBackground.color.r;
-        green = warpBackground.color.g;
-        blue = warpBackground.color.b;
-        count = 0;
+        // Start the first wave
+        Invoke(nameof(checkWave), 3f); // Delay the first wave by 3 seconds
+
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            //changeLevel((LevelTypes) ((int)(++currentLevel)%3));
+            changeLevel((LevelTypes) ((int)(++currentLevel)%3));
 
-            checkWave();
         }
     }
 
@@ -91,9 +88,6 @@ public class LevelManager : MonoBehaviour
     {
         //if boss is defeated switch level
         changeLevel((LevelTypes)((int)(++currentLevel) % 3));
-
-        //spawn the next wave after the boss is defeated
-        checkWave();
     }
 
     //change background with warp transition
@@ -104,37 +98,32 @@ public class LevelManager : MonoBehaviour
         //update current level for the rest of the script
         currentLevel = newLevel;
 
-        //fade in warp and then change the level
-        InvokeRepeating("fadeIn", 0, .01f);
-    }
+        // Start the particle system effect
+        startWarpEffect();
 
-    private void fadeIn()
-    {
-        if (count < 100)
-        {
-            warpBackground.color = new Color(red, green, blue, (count / 100));
-            count++;
-        }
-        else
-        {
-            for(int i = 0; i < 3; i++) 
-            {
-                backgrounds[i].SetActive(false);
-            }
-
-            backgrounds[(int)currentLevel].SetActive(true);
-            InvokeRepeating("fadeOut", 1, .01f);
-        }
+        // Update background for the new level
+        Invoke(nameof(UpdateBackground), 3f);
+        Invoke(nameof(checkWave), 8f);
 
     }
 
-    private void fadeOut()
+    //Update the backgroun after the warp is in full effect
+    private void UpdateBackground()
     {
-        if (count > 0)
+        for (int i = 0; i < backgrounds.Length; i++)
         {
-            warpBackground.color = new Color(red, green, blue, (count / 100));
-            count--;
+            backgrounds[i].SetActive(i == (int)currentLevel);
         }
+    }
+
+    private void startWarpEffect()
+    {
+        // Start or restart the particle system
+        if (warpBackground.isPlaying)
+        {
+            warpBackground.Stop();
+        }
+        warpBackground.Play();
     }
 
 }
