@@ -7,8 +7,10 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     private EnemySpawning enemySpawningScript;
+    private LevelManager levelManager;
 
     [SerializeField] int maxPointValue = 0;
+    [SerializeField] int pointLevelIncrease = 5;
     private int currentPointVal = 0;
     [SerializeField] int waveLevel = 0;
 
@@ -18,22 +20,29 @@ public class WaveManager : MonoBehaviour
     [SerializeField] Collider2D rightSpawnZone;
 
     [SerializeField] float timeBetweenSpawns = 0;
-    private float currentTimer = 0;
+
+    private bool waveDone = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         enemySpawningScript = GetComponent<EnemySpawning>();
+        levelManager = GetComponent<LevelManager>();
     }
-
     private void FixedUpdate()
     {
-        //spawn an enemy until we reach the max point value (might go over, could fix by making maxPointValue into maxPointValue-highestCostOfEnemy)
-        if (currentPointVal < maxPointValue && currentTimer <= 0)
-            currentPointVal += spawnBatch();
+        //prep for a new wave to be called
+        if(waveDone)
+        {
+            waveDone = false;
+            levelManager.wavesCompleted++;
+            currentPointVal = 0;
+            maxPointValue += pointLevelIncrease;
 
-        currentTimer -= Time.fixedDeltaTime;
+            //spawn the next wave
+            levelManager.checkWave();
+        }
     }
 
     //gets a random location at the top of the screen (based on what collider is passed though)
@@ -66,43 +75,18 @@ public class WaveManager : MonoBehaviour
         return new Vector3(randomX, randomY, 0);
     }
 
-    private int spawnBatch()
-    {
-        int earthCost = 0;
-        int iceCost = 0;
-        int fireCost = 0;
-
-        //pick a random number representing the availble earth enemies
-        if (waveLevel >= 0)
-        {
-            earthCost += enemySpawningScript.spawnBasic().enemyPointValue;
-            Instantiate(enemySpawningScript.spawnBasic().enemyPrefab, getRandomTopLocation(), new Quaternion(0, 0, 180, 0));
-            currentTimer = timeBetweenSpawns;
-        }
-
-        //pick a random number representing the availble ice enemies
-        if (waveLevel >= 1)
-        {
-            earthCost += enemySpawningScript.spawnRandQuad().enemyPointValue;
-            Instantiate(enemySpawningScript.spawnRandQuad().enemyPrefab, getRandomTopLocation(), new Quaternion(0, 0, 180, 0));
-            currentTimer = timeBetweenSpawns;
-        }
-
-        //pick a random number representing the availble fire enemies
-        if (waveLevel >= 2)
-        {
-            earthCost += enemySpawningScript.spawnFlare().enemyPointValue;
-            Instantiate(enemySpawningScript.spawnFlare().enemyPrefab, getRandomTopLocation(), new Quaternion(0,0, 180, 0));
-            currentTimer = timeBetweenSpawns;
-        }
-
-        return earthCost+iceCost+fireCost;
-    }
-
     //spawns a wave of level enemies for a given level
     public void spawnWave(int level)
     {
-        while (currentPointVal < maxPointValue && currentTimer <= 0)
+        if (level == 1)
+            InvokeRepeating("spawnLevelOne", 0, timeBetweenSpawns);
+    }
+
+    private void spawnLevelOne()
+    {
+        int level = 1;
+
+        if (currentPointVal < maxPointValue)
         {
             EnemySpawnInfo enemyInfo = pickEnemy(level);
 
@@ -123,6 +107,12 @@ public class WaveManager : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            waveDone = true;
+            CancelInvoke();
+        }
+
     }
 
     //this will randomly select a type of enemy up to the current level (only picks lvl 1's on the first stage but can still pick lvl 1 enemies on stage 3)

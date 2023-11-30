@@ -17,8 +17,8 @@ public class LevelManager : MonoBehaviour
 
     public enum LevelTypes { WORLD1 = 0, WORLD2 = 1, WORLD3 = 2 };
 
-    private LevelTypes currentLevel = LevelTypes.WORLD1;
-    private int wavesCompleted = 0;
+    public LevelTypes currentLevel = LevelTypes.WORLD1;
+    public int wavesCompleted = 0;
 
     private void Start()
     {
@@ -34,12 +34,14 @@ public class LevelManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            changeLevel(LevelTypes.WORLD2);
+            //changeLevel((LevelTypes) ((int)(++currentLevel)%3));
+
+            checkWave();
         }
     }
 
     //spawn and keep track of waves
-    private void checkWave()
+    public void checkWave()
     {
         switch(currentLevel)
         {
@@ -85,12 +87,17 @@ public class LevelManager : MonoBehaviour
         Instantiate(bosses[(int) currentLevel], bossSpawnPoint.transform);
 
         //if boss is defeated switch level
-        changeLevel(currentLevel++);
+        //changeLevel(currentLevel++);
+
+        //spawn the next wave after the boss is defeated
+        //checkWave();
     }
 
     //change background with warp transition
     public void changeLevel(LevelTypes newLevel)
     {
+        CancelInvoke();
+
         //update current level for the rest of the script
         currentLevel = newLevel;
 
@@ -122,7 +129,6 @@ public class LevelManager : MonoBehaviour
     {
         if (count > 0)
         {
-            Debug.Log("here");
             warpBackground.color = new Color(red, green, blue, (count / 100));
             count--;
         }

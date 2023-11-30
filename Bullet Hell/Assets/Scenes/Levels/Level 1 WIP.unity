@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPointValue: 5
+  currentPointVal: 0
   waveLevel: 0
   topSpawnZone: {fileID: 2115903166}
   leftSpawnZone: {fileID: 1970674660}
@@ -458,13 +459,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveManager: {fileID: 362387422}
   wavesUntilBoss: 3
-  bosses: []
+  bosses:
+  - {fileID: 2525940643257070039, guid: 5213cee9880294e489fe43a7ef60161e, type: 3}
+  - {fileID: 7350717995874288666, guid: a1eda1357ff2d004ca2114bb19abe8d2, type: 3}
+  - {fileID: 2525940643257070039, guid: 5213cee9880294e489fe43a7ef60161e, type: 3}
   bossSpawnPoint: {fileID: 1281264347}
   backgrounds:
   - {fileID: 808725378}
   - {fileID: 1344216492}
   - {fileID: 1303153830}
   warpBackground: {fileID: 2022848601}
+  currentLevel: 0
+  wavesCompleted: 0
 --- !u!4 &401170513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5755119140277344728, guid: 83f55f3f15719e3439c53ea3a4a8ca22, type: 3}

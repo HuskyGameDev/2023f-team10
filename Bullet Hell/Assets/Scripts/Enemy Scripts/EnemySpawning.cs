@@ -28,7 +28,12 @@ public class EnemySpawning : MonoBehaviour
         availableFireEnemies = fireEnemyPrefabs.Length;
 
         lvlOneEnemies = new EnemySpawnInfo[availableEarthEnemies];
+        lvlTwoEnemies = new EnemySpawnInfo[availableIceEnemies];
+        lvlThreeEnemies = new EnemySpawnInfo[availableFireEnemies];
 
+        populateLevelOne();
+        populateLevelTwo();
+        populateLevelThree();
     }
 
     //will populate the level one enemies (all at cost 1 + index by default)
@@ -36,7 +41,7 @@ public class EnemySpawning : MonoBehaviour
     {
         for(int i = 0; i < availableEarthEnemies; i++)
         {
-            lvlOneEnemies[i] = new EnemySpawnInfo(earthEnemyPrefabs[i], 0, 1+i, EnemySpawnInfo.SpawnArea.Top);
+            lvlOneEnemies[i] = new EnemySpawnInfo(earthEnemyPrefabs[i], 0, 1 + i, EnemySpawnInfo.SpawnArea.Top);
         }
     }
 
@@ -45,7 +50,7 @@ public class EnemySpawning : MonoBehaviour
     {
         for (int i = 0; i < availableIceEnemies; i++)
         {
-            lvlTwoEnemies[i] = new EnemySpawnInfo(iceEnemyPrefabs[i], 0, 1+ i, EnemySpawnInfo.SpawnArea.Top);
+            lvlTwoEnemies[i] = new EnemySpawnInfo(iceEnemyPrefabs[i], 0, 2 + i, EnemySpawnInfo.SpawnArea.Top);
         }
     }
 
@@ -54,28 +59,7 @@ public class EnemySpawning : MonoBehaviour
     {
         for (int i = 0; i < availableFireEnemies; i++)
         {
-            lvlThreeEnemies[i] = new EnemySpawnInfo(fireEnemyPrefabs[i], 0, 1+ i, EnemySpawnInfo.SpawnArea.Top);
+            lvlThreeEnemies[i] = new EnemySpawnInfo(fireEnemyPrefabs[i], 0, 3 + i, EnemySpawnInfo.SpawnArea.Top);
         }
-    }
-
-
-    //TODO: delete this after replacing these scripts
-
-    //earth enemies
-    public EnemySpawnInfo spawnBasic()
-    {
-        return new EnemySpawnInfo(earthEnemyPrefabs[0], 0, 1);
-    }
-
-    //ice enemies
-    public EnemySpawnInfo spawnRandQuad()
-    {
-        return new EnemySpawnInfo(iceEnemyPrefabs[0], 1, 5);
-    }
-
-    //fire enemies
-    public EnemySpawnInfo spawnFlare()
-    {
-        return new EnemySpawnInfo(fireEnemyPrefabs[0], 2, 10);
     }
 }
