@@ -409,9 +409,9 @@ MonoBehaviour:
   earthEnemyPrefabs:
   - {fileID: 4662613442001306173, guid: 61eda4c74ee8eb64cb147b43a1260326, type: 3}
   iceEnemyPrefabs:
-  - {fileID: 4587299657722433823, guid: c9baa9fae0cb0c84a9e748370d7eab7d, type: 3}
+  - {fileID: 4662613442001306173, guid: eac5127cf901b9f4abd17e20d1df9fb8, type: 3}
   fireEnemyPrefabs:
-  - {fileID: 4274674083073249466, guid: 195529ce2162f0946b4819c1f3c8f047, type: 3}
+  - {fileID: 4662613442001306173, guid: 4801ecaea624f6945b4807276052bd29, type: 3}
 --- !u!114 &362387422
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -116,7 +116,8 @@ public class WaveManager : MonoBehaviour
     //this will randomly select a type of enemy up to the current level (only picks lvl 1's on the first stage but can still pick lvl 1 enemies on stage 3)
     private EnemySpawnInfo pickEnemy(int difficulty)
     {
-        int thisDiff = Random.Range(1, difficulty);
+        int thisDiff = Random.Range(1, difficulty+1);
+        Debug.Log(thisDiff);
         int enemyIndex = 0;
 
         switch(thisDiff)
