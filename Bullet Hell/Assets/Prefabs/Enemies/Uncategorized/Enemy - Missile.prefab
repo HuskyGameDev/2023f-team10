@@ -193,7 +193,7 @@ MonoBehaviour:
   startingDistance: 0.2
   startingDirection: {x: 0, y: -1}
   shotWidth: 0.4
-  burstInterval: 0
+  burstInterval: 2
   restTime: 0
   rotate: 1
   rotationPerBurst: 0
@@ -286,12 +286,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cace0a9318be1864fa1207721454aef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeForAttack: 1
+  timeForAttack: 2
   moveType: 5
   speed: 1
   angle: 45
   moveChangeTimer: 5
-  targetingRadius: 3
   target: {x: 1.4419471, y: -0.77542, z: 0}
 --- !u!1 &2903238387633624478
 GameObject:

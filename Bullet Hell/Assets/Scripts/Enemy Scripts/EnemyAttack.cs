@@ -52,12 +52,16 @@ public class EnemyAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (attackTimer <= 0) 
+        if (attackTimer <= 0)
         {
             doAttack();
             attackTimer = attackSpeed;
-        } else
+        }
+        else
+        {
+            shooterScript.Shoot(0);
             attackTimer -= Time.fixedDeltaTime;
+        }
     }
 
     //use this to change the attack pattern during runtime
