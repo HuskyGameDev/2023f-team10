@@ -85,7 +85,7 @@ public class SecondBossBehavior : BossBehavior
     {
         Instantiate(add, new Vector3(-2, transform.position.y, transform.position.z + 1), transform.rotation);
 
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(3.75f / 2.0f);
 
         Instantiate(add, new Vector3(2, transform.position.y, transform.position.z + 1), transform.rotation);
     }

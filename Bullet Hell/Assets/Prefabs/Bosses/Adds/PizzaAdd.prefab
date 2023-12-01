@@ -111,7 +111,7 @@ MonoBehaviour:
   startingDistance: 0.1
   startingDirection: {x: 0, y: -1}
   shotWidth: 0
-  burstInterval: 3.5
+  burstInterval: 3.75
   restTime: 3
   rotate: 0
   rotationPerBurst: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43026bfe4b5143c4587d4200860cccf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 5
+  initialSpeed: 4.66
   rotationAmount: 20
 --- !u!50 &794830622419646698
 Rigidbody2D:
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 577575052478301199}
-  maxHealth: 1000
+  maxHealth: 750
 --- !u!114 &5278927470587223802
 MonoBehaviour:
   m_ObjectHideFlags: 0
