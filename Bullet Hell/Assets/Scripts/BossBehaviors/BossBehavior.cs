@@ -27,6 +27,10 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] protected float waitTime = 0.25f;
     protected List<GameObject> destroyOnDeath = new();
 
+    protected bool phaseTwoShown = false;
+    protected bool phaseTwo = false;
+
+
     protected virtual void Start()
     {
         shooters = new List<Shooter>(phaseOneShooters);
@@ -45,9 +49,22 @@ public class BossBehavior : MonoBehaviour
     public virtual void NextBehavior()
     {
         int randBehavior = UnityEngine.Random.Range(0, actions.Count);
-        if (actions[randBehavior] == previousAction)
+
+        if (!phaseTwoShown && phaseTwo && phaseTwoActions.Count > 0)
         {
-            randBehavior = UnityEngine.Random.Range(0, actions.Count);
+            // ensure if phase two is started, the first behavior chosen is the first phase 2 action
+            randBehavior = phaseOneActions.Count;
+            phaseTwoShown = true;
+        }
+        else
+        {
+            // if the chosen behavior is the same as the previous behavior, roll at most 3 more times for a different behavior
+            int i = 0;
+            while (actions[randBehavior] == previousAction && i < 3)
+            {
+                randBehavior = UnityEngine.Random.Range(0, actions.Count);
+                i++;
+            }
         }
         if(currentShooter >= 0)
         {
@@ -55,6 +72,10 @@ public class BossBehavior : MonoBehaviour
         }
         PickShooter();
         called = 0;
+
+        
+
+        previousAction = actions[randBehavior];
         movement.Wait(waitTime, actions[randBehavior]);
     }
 
@@ -75,6 +96,9 @@ public class BossBehavior : MonoBehaviour
         movement.Speed = movement.Speed * 1.25f;
         
         waitTime *= 0.5f;
+
+        phaseTwoShown = false;
+        phaseTwo = true;
     }
 
     public virtual void OnDeath()

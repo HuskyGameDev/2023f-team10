@@ -106,8 +106,9 @@ public class Shooter : MonoBehaviour
         }
         else if(!isShooting && callWhenFinished != null)
         {
-            callWhenFinished();
+            Action tmp = callWhenFinished;
             callWhenFinished = null;
+            tmp();
         }
     }
 
