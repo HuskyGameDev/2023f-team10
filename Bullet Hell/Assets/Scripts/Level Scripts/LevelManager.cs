@@ -32,8 +32,9 @@ public class LevelManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            changeLevel((LevelTypes) ((int)(++currentLevel)%3));
+            //changeLevel((LevelTypes) ((int)(++currentLevel)%3));
 
+            checkWave();
         }
     }
 
