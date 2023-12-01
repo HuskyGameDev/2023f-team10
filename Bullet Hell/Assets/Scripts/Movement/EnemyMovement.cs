@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /*moves the object this script is placed on (such as an enemy) in a straight line in one of the following methods:
  *Vertical: moves the enemy up or down at the specified speed
@@ -31,8 +32,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float moveChangeTimer = 0;
 
     //for random hold movement
-    [SerializeField] GameObject targetOrigin = null;
-    [SerializeField] float targetingRadius = 0;
+    private Collider2D targetOrigin = null;
 
     //used to keep track of what the current countdown until an event is (being used for zig zag only  as of writing this)
     private float secondTimer = 0;
@@ -45,6 +45,12 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         enemyAttackScript = GetComponent<EnemyAttack>();
+
+        GameObject temp = null;
+        temp =GameObject.FindGameObjectWithTag("RandomMoveZone");
+
+        if(temp != null)
+            targetOrigin = temp.GetComponent<Collider2D>();
     }
 
     //updating on fixed update for consistent behavior
@@ -72,11 +78,14 @@ public class EnemyMovement : MonoBehaviour
         currentAttackTimer -= Time.fixedDeltaTime;
     }
 
-    //used to countdown from a value in seconds
-    private void countDown()
+    //gets a random location in an area tagged with "RandomMoveZone"
+    private Vector3 getRandomMoveLocation()
     {
-        if(secondTimer > 0)
-            secondTimer--;
+        float randomX = Random.Range(targetOrigin.bounds.min.x, targetOrigin.bounds.max.x);
+
+        float randomY = Random.Range(targetOrigin.bounds.min.y, targetOrigin.bounds.max.y);
+
+        return new Vector3(randomX, randomY, 0);
     }
 
     //doing some math here based on the Pythagoras theorem (SOH CAH TOA) where the hypotenuse is 1 (since we move 1 unit at a time) we back calculate from
@@ -125,9 +134,8 @@ public class EnemyMovement : MonoBehaviour
             //don't attack until position is found/held
             enemyAttackScript.canAttack = false;
 
-            //pick a location within the given radius around the given target objects position
-            Vector2 originPos = new Vector2(targetOrigin.transform.position.x, targetOrigin.transform.position.y);
-            target = originPos + (UnityEngine.Random.insideUnitCircle * targetingRadius);
+            //pick a location within the given bounds
+            target = getRandomMoveLocation();
 
             //calculate the normalized vector distance between target and this object
             direction = (target - transform.position).normalized;

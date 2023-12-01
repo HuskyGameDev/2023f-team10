@@ -57,7 +57,7 @@ public class EnemyAttack : MonoBehaviour
             doAttack();
             attackTimer = attackSpeed;
         } else
-            attackTimer -= Time.deltaTime;
+            attackTimer -= Time.fixedDeltaTime;
     }
 
     //use this to change the attack pattern during runtime
