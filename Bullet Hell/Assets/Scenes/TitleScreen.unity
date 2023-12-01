@@ -824,7 +824,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartButton: {fileID: 2142336931}
-  OptionButton: {fileID: 0}
   ExitButton: {fileID: 1638943457}
 --- !u!114 &1638943461
 MonoBehaviour:
@@ -964,7 +963,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d8f4362fd85744478aa01413b5667fb4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e1ceb67d9c13f174ea217acada2eb4d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1272,7 +1271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartButton: {fileID: 2142336931}
-  OptionButton: {fileID: 0}
   ExitButton: {fileID: 1638943457}
 --- !u!114 &2142336935
 MonoBehaviour:
