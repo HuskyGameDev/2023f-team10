@@ -32,57 +32,60 @@ public class LevelManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            //changeLevel((LevelTypes) ((int)(++currentLevel)%3));
-
-            checkWave();
+            changeLevel((LevelTypes) ((int)(++currentLevel)%3));
         }
     }
 
     //spawn and keep track of waves
     public void checkWave()
     {
-        switch(currentLevel)
+        //if there are still enemies left don't do anything
+        if (!checkForEnemies())
         {
-            case LevelTypes.WORLD1:
-                if (wavesCompleted == wavesUntilBoss)
-                {
-                    wavesCompleted = 0;
-                    bossLevel();
-                }
-                else
-                    waveManager.spawnWave(1);
+            switch (currentLevel)
+            {
+                case LevelTypes.WORLD1:
+                    if (wavesCompleted == wavesUntilBoss)
+                    {
+                        wavesCompleted = 0;
+                        bossLevel();
+                    }
+                    else
+                        waveManager.spawnWave(1);
 
-                break;
+                    break;
 
-            case LevelTypes.WORLD2:
-                if (wavesCompleted == wavesUntilBoss)
-                {
-                    wavesCompleted = 0;
-                    bossLevel();
-                }
-                else
-                    waveManager.spawnWave(2);
+                case LevelTypes.WORLD2:
+                    if (wavesCompleted == wavesUntilBoss)
+                    {
+                        wavesCompleted = 0;
+                        bossLevel();
+                    }
+                    else
+                        waveManager.spawnWave(2);
 
-                break;
+                    break;
 
-            case LevelTypes.WORLD3:
-                if (wavesCompleted == wavesUntilBoss)
-                {
-                    wavesCompleted = 0;
-                    bossLevel();
-                }
-                else
-                    waveManager.spawnWave(3);
+                case LevelTypes.WORLD3:
+                    if (wavesCompleted == wavesUntilBoss)
+                    {
+                        wavesCompleted = 0;
+                        bossLevel();
+                    }
+                    else
+                        waveManager.spawnWave(3);
 
-                break;
+                    break;
+            }
         }
+        //wait a second to see if the enemies are all gone
+        else Invoke("checkWave", 1);
     }
 
     //handles boss levels
     private void bossLevel()
     {
-        //spawn boss
-        Instantiate(bosses[(int) currentLevel], bossSpawnPoint.transform);
+        Instantiate(bosses[(int)currentLevel], bossSpawnPoint.transform);
     }
 
     public void onBossDefeat()
@@ -127,4 +130,16 @@ public class LevelManager : MonoBehaviour
         warpBackground.Play();
     }
 
+    //returns true if there are enemies present or false if there are none
+    private bool checkForEnemies()
+    {
+        GameObject enemy = null;
+
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+
+        if (enemy != null)
+            return true;
+        else
+            return false;
+    }
 }

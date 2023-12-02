@@ -81,7 +81,8 @@ public class WaveManager : MonoBehaviour
         CancelInvoke();
         this.level = level;
 
-        InvokeRepeating("spawnWaveForReal", 0, timeBetweenSpawns);
+        //wait 5 seconds to spawn a wave then spawn an enemy every timeBetweenSpawns seconds
+        InvokeRepeating("spawnWaveForReal", 5, timeBetweenSpawns);
     }
 
     private void spawnWaveForReal()

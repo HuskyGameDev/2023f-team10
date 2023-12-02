@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 8653493900777329452}
   - component: {fileID: 2898651339270966984}
   m_Layer: 0
-  m_Name: Suicide Dart
+  m_Name: Ice - Suicide Dart
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,7 +274,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b08bf9fb59de258408136850415ff35f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.5348599, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 805615444461657533}
-  maxHealth: 1
+  maxHealth: 50
 --- !u!114 &3024341972287860211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,12 +402,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeForAttack: 0.5
-  moveType: 0
-  speed: 5
+  moveType: 6
+  speed: 4
   angle: 50
   moveChangeTimer: 0.5
-  targetOrigin: {fileID: 0}
-  targetingRadius: 3
   target: {x: 0, y: 1, z: 0}
 --- !u!1 &7004223015551241297
 GameObject:

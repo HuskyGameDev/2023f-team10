@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     private float currentAttackTimer = 0f;
 
     //randomhold is to have the enemy find a random position onscreen and hold position once it gets there
-    private enum MoveOptions{VERTICAL, HORIZONTAL, DIAGONAL, ZIGZAG, RANDOMHOLD, RANDOM};
+    private enum MoveOptions { VERTICAL, HORIZONTAL, DIAGONAL, ZIGZAG, RANDOMHOLD, RANDOM, SEEK};
 
     //general variables
     [SerializeField] MoveOptions moveType;
@@ -47,9 +47,9 @@ public class EnemyMovement : MonoBehaviour
         enemyAttackScript = GetComponent<EnemyAttack>();
 
         GameObject temp = null;
-        temp =GameObject.FindGameObjectWithTag("RandomMoveZone");
+        temp = GameObject.FindGameObjectWithTag("RandomMoveZone");
 
-        if(temp != null)
+        if (temp != null)
             targetOrigin = temp.GetComponent<Collider2D>();
     }
 
@@ -72,6 +72,10 @@ public class EnemyMovement : MonoBehaviour
         //handles random hold and ranom move
         else if (moveType == MoveOptions.RANDOMHOLD || moveType == MoveOptions.RANDOM)
             randomMovement();
+
+        //handles verticle movment seeking the player
+        else if (moveType == MoveOptions.SEEK)
+            seekPlayer();
 
         //count the timer down every second
         secondTimer -= Time.fixedDeltaTime;
@@ -122,7 +126,7 @@ public class EnemyMovement : MonoBehaviour
             speed = -speed;
             angle = -angle;
         }
-      
+
         diagonalMove(angle);
     }
 
@@ -158,5 +162,16 @@ public class EnemyMovement : MonoBehaviour
             if (moveType == MoveOptions.RANDOM)
                 foundSpot = false;
         }
+    }
+
+    public void seekPlayer()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        Vector3 temp = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.fixedDeltaTime);
+
+        Vector3 temp2 = transform.position;
+
+        transform.position = new Vector3(temp.x, (temp2.y - speed * Time.fixedDeltaTime), 0);
     }
 }
