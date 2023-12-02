@@ -36,30 +36,30 @@ public class EnemySpawning : MonoBehaviour
         populateLevelThree();
     }
 
-    //will populate the level one enemies (all at cost 1 + index by default)
+    //will populate the level one enemies (all at cost 1 by default)
     private void populateLevelOne()
     {
         for(int i = 0; i < availableEarthEnemies; i++)
         {
-            lvlOneEnemies[i] = new EnemySpawnInfo(earthEnemyPrefabs[i], 0, 1 + i, EnemySpawnInfo.SpawnArea.Top);
+            lvlOneEnemies[i] = new EnemySpawnInfo(earthEnemyPrefabs[i], 0, 1, EnemySpawnInfo.SpawnArea.Top);
         }
     }
 
-    //will populate the level one enemies (all at cost 1 + index by default)
+    //will populate the level two enemies (all at cost 2 by default)
     private void populateLevelTwo()
     {
         for (int i = 0; i < availableIceEnemies; i++)
         {
-            lvlTwoEnemies[i] = new EnemySpawnInfo(iceEnemyPrefabs[i], 0, 2 + i, EnemySpawnInfo.SpawnArea.Top);
+            lvlTwoEnemies[i] = new EnemySpawnInfo(iceEnemyPrefabs[i], 0, 2, EnemySpawnInfo.SpawnArea.Top);
         }
     }
 
-    //will populate the level one enemies (all at cost 1 + index by default)
+    //will populate the level three enemies (all at cost 3 by default)
     private void populateLevelThree()
     {
         for (int i = 0; i < availableFireEnemies; i++)
         {
-            lvlThreeEnemies[i] = new EnemySpawnInfo(fireEnemyPrefabs[i], 0, 3 + i, EnemySpawnInfo.SpawnArea.Top);
+            lvlThreeEnemies[i] = new EnemySpawnInfo(fireEnemyPrefabs[i], 0, 3, EnemySpawnInfo.SpawnArea.Top);
         }
     }
 }

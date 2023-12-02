@@ -9,8 +9,12 @@ public class WaveManager : MonoBehaviour
     private EnemySpawning enemySpawningScript;
     private LevelManager levelManager;
 
+    //the max number of points worth of enemies that can be spawned
     [SerializeField] int maxPointValue = 0;
+
+    //number of points add to the max after each wave
     [SerializeField] int pointLevelIncrease = 5;
+
     private int currentPointVal = 0;
 
     //this should be a rectangle/square object with a collider
