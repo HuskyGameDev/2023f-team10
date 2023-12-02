@@ -189,7 +189,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1937768380327796375, guid: 7fb5764e6f81d104fb73956d9e8fa067, type: 3}
   burstCount: 1
   bulletsPerBurst: 4
-  angleSpread: 0
+  angleSpread: 25
   startingDistance: 0.2
   startingDirection: {x: 0, y: -1}
   shotWidth: 0.4
