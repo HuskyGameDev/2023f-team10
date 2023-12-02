@@ -5338,7 +5338,7 @@ MonoBehaviour:
   - {fileID: 1344216492}
   - {fileID: 1303153830}
   warpBackground: {fileID: 9963059}
-  currentLevel: 0
+  currentLevel: 2
   wavesCompleted: 0
 --- !u!114 &362387425
 MonoBehaviour:
