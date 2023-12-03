@@ -54,7 +54,7 @@ MonoBehaviour:
   shotWidth: 0
   burstInterval: 0.2
   restTime: 0
-  rotate: 1
+  rotate: 0
   rotationPerBurst: 0
 --- !u!1 &5465838748895496654
 GameObject:
@@ -66,6 +66,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3166918913832149844}
   - component: {fileID: 310852571767784121}
+  - component: {fileID: 8077968697769067160}
   m_Layer: 0
   m_Name: CircleM
   m_TagString: Untagged
@@ -103,8 +104,8 @@ MonoBehaviour:
   instatiateAsChild: 0
   bulletPrefab: {fileID: 7371400616562743903, guid: 530c5ce40f3dc81489d1675f5948ec29, type: 3}
   burstCount: 1
-  bulletsPerBurst: 25
-  angleSpread: 180
+  bulletsPerBurst: 5
+  angleSpread: 25
   startingDistance: 0.25
   startingDirection: {x: 0, y: -1}
   shotWidth: 0
@@ -112,6 +113,19 @@ MonoBehaviour:
   restTime: 0
   rotate: 0
   rotationPerBurst: 0
+--- !u!114 &8077968697769067160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465838748895496654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a1e5e088627f1439ef48fa2d8856a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jitterAmount: 0
 --- !u!1 &5622443997688901209
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +180,7 @@ MonoBehaviour:
   shotWidth: 0
   burstInterval: 1.5
   restTime: 0
-  rotate: 1
+  rotate: 0
   rotationPerBurst: 0
 --- !u!1 &7208261789869249173
 GameObject:
@@ -216,7 +230,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7371400616562743903, guid: 530c5ce40f3dc81489d1675f5948ec29, type: 3}
   burstCount: 1
   bulletsPerBurst: 25
-  angleSpread: 180
+  angleSpread: 135
   startingDistance: 0.25
   startingDirection: {x: 0, y: -1}
   shotWidth: 0
@@ -380,7 +394,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.03427553, y: -0.26277852}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -391,7 +405,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.1875, y: 1.5625}
+  m_Size: {x: 5.8164816, y: 1.036943}
   m_EdgeRadius: 0
 --- !u!114 &7015465260424370643
 MonoBehaviour:
@@ -423,15 +437,15 @@ MonoBehaviour:
   - {fileID: 2812749228834841547}
   - {fileID: 310852571767784121}
   - {fileID: 4793664354856380810}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5057773766705444154}
+  - {fileID: 4180549334626078343}
+  - {fileID: 8107904254929152796}
   phaseTwoShooters: []
   waitTime: 0.25
   circleFireRate: 1.175
   circleFireAmount: 15
-  rocketFireRate: 2.5
-  rocketFireAmount: 5
+  rocketFireRate: 2.25
+  rocketFireAmount: 3
   add: {fileID: 3660832554021805219, guid: 260bc1848c5b41e45a72ad35617966ae, type: 3}
 --- !u!114 &5359489611242622329
 MonoBehaviour:
@@ -508,7 +522,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7371400616562743903, guid: 530c5ce40f3dc81489d1675f5948ec29, type: 3}
   burstCount: 1
   bulletsPerBurst: 25
-  angleSpread: 180
+  angleSpread: 135
   startingDistance: 0.25
   startingDirection: {x: 0, y: -1}
   shotWidth: 0
@@ -570,7 +584,7 @@ MonoBehaviour:
   shotWidth: 0
   burstInterval: 0.2
   restTime: 0
-  rotate: 1
+  rotate: 0
   rotationPerBurst: 0
 --- !u!1001 &4345903216199045641
 PrefabInstance:

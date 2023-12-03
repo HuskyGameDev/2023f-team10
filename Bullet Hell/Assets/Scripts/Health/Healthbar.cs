@@ -9,9 +9,23 @@ public class Healthbar : MonoBehaviour
     [SerializeField] private Color low;
     [SerializeField] private Color high;
 
+    private CanvasScaler scaler;
+    private Vector2 screenSize;
+
     public virtual void Start()
     {
         slider.gameObject.SetActive(true);
+        scaler = GetComponent<CanvasScaler>();
+        if(Screen.height >= 540)
+        {
+            scaler.scaleFactor = (int)(Screen.height / 540);
+        }
+        else
+        {
+            scaler.scaleFactor = ((float)Screen.height) / 540.0f;
+        }
+
+        screenSize = new Vector2 (Screen.width, Screen.height);
     }
 
     public virtual void SetHealth(float health, float maxHealth)
@@ -29,5 +43,22 @@ public class Healthbar : MonoBehaviour
             1
             );
         slider.fillRect.GetComponentInChildren<Image>().color = lerpedNormalized;
+    }
+
+    private void Update()
+    {
+        if(screenSize.y != Screen.height)
+        {
+            if (Screen.height >= 540)
+            {
+                scaler.scaleFactor = (int)(Screen.height / 540);
+            }
+            else
+            {
+                scaler.scaleFactor = ((float)Screen.height) / 540.0f;
+            }
+
+            screenSize = new Vector2(Screen.width, Screen.height);
+        }
     }
 }

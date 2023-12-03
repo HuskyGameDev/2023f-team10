@@ -23,6 +23,10 @@ public class RocketBullet : Bullet
         rb = GetComponent<Rigidbody2D>();
         deathtime = Time.time + lifetime;
         rb.velocity = transform.up * bulletSpeed / 10;
+        if(target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
     private void FixedUpdate()

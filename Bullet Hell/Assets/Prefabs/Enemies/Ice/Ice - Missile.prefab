@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 6570177305185834614}
   - component: {fileID: 2907873632319791619}
   - component: {fileID: 5663151534285995282}
+  - component: {fileID: -1867535585331918195}
   m_Layer: 0
   m_Name: Ice - Missile
   m_TagString: Enemy
@@ -189,7 +190,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1937768380327796375, guid: 7fb5764e6f81d104fb73956d9e8fa067, type: 3}
   burstCount: 1
   bulletsPerBurst: 2
-  angleSpread: 0
+  angleSpread: 30
   startingDistance: 0.2
   startingDirection: {x: 0, y: -1}
   shotWidth: 0.4
@@ -214,11 +215,8 @@ MonoBehaviour:
   canAttack: 1
   presetOptions:
   - presetName: default
-    presetObject: {fileID: 2655988077585873504, guid: 06fff8a657abd7a48a1e96feae989230, type: 2}
   - presetName: Flare Burst
-    presetObject: {fileID: 2655988077585873504, guid: e58bedc32f351464a905003b48b3afec, type: 2}
   - presetName: Wave
-    presetObject: {fileID: 2655988077585873504, guid: 098a6db4154d51d40bd0f846192e8f15, type: 2}
   attackSpeed: 1
 --- !u!114 &3273239933044948284
 MonoBehaviour:
@@ -292,6 +290,19 @@ MonoBehaviour:
   angle: 45
   moveChangeTimer: 5
   target: {x: 1.4419471, y: -0.77542, z: 0}
+--- !u!114 &-1867535585331918195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2895731978311577515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a1e5e088627f1439ef48fa2d8856a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jitterAmount: 0
 --- !u!1 &2903238387633624478
 GameObject:
   m_ObjectHideFlags: 0
