@@ -5274,7 +5274,7 @@ MonoBehaviour:
   bosses:
   - {fileID: 2525940643257070039, guid: 5213cee9880294e489fe43a7ef60161e, type: 3}
   - {fileID: 7350717995874288666, guid: a1eda1357ff2d004ca2114bb19abe8d2, type: 3}
-  - {fileID: 2525940643257070039, guid: 5213cee9880294e489fe43a7ef60161e, type: 3}
+  - {fileID: 1061206047534550186, guid: ad309fcadde95334bbaaf5aca23e7182, type: 3}
   bossSpawnPoint: {fileID: 1046428761}
   backgrounds:
   - {fileID: 808725378}
