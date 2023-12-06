@@ -339,11 +339,8 @@ MonoBehaviour:
   canAttack: 1
   presetOptions:
   - presetName: default
-    presetObject: {fileID: 2655988077585873504, guid: 06fff8a657abd7a48a1e96feae989230, type: 2}
   - presetName: Flare Burst
-    presetObject: {fileID: 2655988077585873504, guid: e58bedc32f351464a905003b48b3afec, type: 2}
   - presetName: Wave
-    presetObject: {fileID: 2655988077585873504, guid: 098a6db4154d51d40bd0f846192e8f15, type: 2}
   attackSpeed: 1
 --- !u!114 &828709512676910225
 MonoBehaviour:
@@ -358,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 8039307668796865602}
-  maxHealth: 75
+  maxHealth: 1
 --- !u!114 &4196921876669621584
 MonoBehaviour:
   m_ObjectHideFlags: 0
