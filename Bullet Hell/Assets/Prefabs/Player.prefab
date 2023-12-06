@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b312b05643b9a1d499c085a440150610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashingSprite: {fileID: 21300000, guid: 9021ce1d306cf76409312d9a43d57b89, type: 3}
+  dashingSprite: {fileID: 21300000, guid: 594f6e28cb012aa48890de063842291d, type: 3}
   goBasicShooter: {fileID: 5058620674239131505}
   goLaserShooter: {fileID: 2369955766612321510}
   maxSpeed: 1
