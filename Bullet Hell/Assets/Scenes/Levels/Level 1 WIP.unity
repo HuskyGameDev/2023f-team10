@@ -5002,6 +5002,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4122106183590959627, guid: 3f156741789049c4cb06185ffb78e22d, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4052543647167979591, guid: 46c6f8ab58da2db4e88e32a8814ee429, type: 3}
     - target: {fileID: 5996336184656029847, guid: 3f156741789049c4cb06185ffb78e22d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

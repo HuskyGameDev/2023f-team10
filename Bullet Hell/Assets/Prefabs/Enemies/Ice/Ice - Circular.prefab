@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instatiateAsChild: 0
-  bulletPrefab: {fileID: 7371400616562743903, guid: 530c5ce40f3dc81489d1675f5948ec29, type: 3}
+  bulletPrefab: {fileID: 7371400616562743903, guid: 618de9c730c754e41978e50e6dade457, type: 3}
   burstCount: 8
   bulletsPerBurst: 2
   angleSpread: 25

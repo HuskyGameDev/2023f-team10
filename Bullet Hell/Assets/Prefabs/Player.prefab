@@ -219,7 +219,7 @@ MonoBehaviour:
   dashingSprite: {fileID: 21300000, guid: 594f6e28cb012aa48890de063842291d, type: 3}
   goBasicShooter: {fileID: 5058620674239131505}
   goLaserShooter: {fileID: 2369955766612321510}
-  maxSpeed: 1
+  maxSpeed: 2
   acceleration: 8
   dashSpeed: 2.5
   dashInterval: 5
