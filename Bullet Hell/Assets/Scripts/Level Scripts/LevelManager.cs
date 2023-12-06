@@ -24,10 +24,11 @@ public class LevelManager : MonoBehaviour
         waveManager = GetComponent<WaveManager>();
 
         // Start the first wave
-        Invoke(nameof(checkWave), 1f); // Delay the first wave by 3 seconds
+        Invoke(nameof(checkWave), 1f); // Delay the first wave by 1 second
 
     }
 
+    /* this is for testing features not needed in the build
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -35,6 +36,7 @@ public class LevelManager : MonoBehaviour
             changeLevel((LevelTypes) ((int)(++currentLevel)%3));
         }
     }
+    */
 
     //spawn and keep track of waves
     public void checkWave()
