@@ -11,5 +11,8 @@ public class DeathBehavior : MonoBehaviour
     {
         GameObject explosion = Instantiate(deathExplosion, transform.position, transform.rotation);
         Destroy(gameObject);
+
+        //play an explosion sound
+        AudioManager.explosion();
     }
 }

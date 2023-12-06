@@ -29,6 +29,8 @@ public class Health : MonoBehaviour
 
         healthbar.SetHealth(currentHealth, maxHealth);
 
+        AudioManager.damage();
+
         if(currentHealth == 0)
         {
             deathBehavior.Die();

@@ -157,6 +157,9 @@ public class Shooter : MonoBehaviour
                 }
 
                 currentAngle += angleStep;
+
+                //plays a shooting sound effect
+                AudioManager.quickShot();
             }
 
             currentAngle = startAngle + (rotationPerBurst * (i + 1));

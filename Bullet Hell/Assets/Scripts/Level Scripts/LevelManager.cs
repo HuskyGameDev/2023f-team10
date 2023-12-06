@@ -87,11 +87,14 @@ public class LevelManager : MonoBehaviour
     //handles boss levels
     private void bossLevel()
     {
+        AudioManager.bossMusic();
         Instantiate(bosses[(int)currentLevel], bossSpawnPoint.transform);
     }
 
     public void onBossDefeat()
     {
+        AudioManager.normalMusic();
+
         //if boss is defeated switch level
         changeLevel((LevelTypes)((int)(++currentLevel) % 3));
     }
