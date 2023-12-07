@@ -154,7 +154,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0, y: 0.125}
   m_Size: {x: 0.15, y: 0.25}
   m_Direction: 0
 --- !u!60 &9015276247078567391
@@ -201,9 +201,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: 0.19, y: -0.25}
-      - {x: -0.19, y: -0.25}
+    - - {x: 0, y: 0.36}
+      - {x: 0.25, y: -0.11}
+      - {x: -0.25, y: -0.11}
   m_UseDelaunayMesh: 0
 --- !u!114 &4069701647667688842
 MonoBehaviour:

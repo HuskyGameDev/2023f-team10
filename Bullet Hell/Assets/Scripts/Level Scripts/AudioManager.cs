@@ -13,8 +13,8 @@ public class AudioManager : MonoBehaviour
 
     static AudioSource[] audioSources;
 
-    static float soundVolume = .5f;
-    static float musicVolume = 1f;
+    static float soundVolume = 1f;
+    static float musicVolume = .5f;
 
     private void Start()
     {
